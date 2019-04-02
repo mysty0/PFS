@@ -5,6 +5,7 @@
 #include "../PFS/StorageChunk.h"
 #include "../PFS/StorageChunk.cpp"
 #include "../PFS/MapChunkStorage.cpp"
+#include "../PFS/VirtualByteStorage.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -71,13 +72,36 @@ namespace PFS_Tests{
 
 			Assert::IsTrue(chunk && chunk1 && !chunk2);
 		}
-		TEST_METHOD(Resize_increase_Test) {
-			Storage storage(1024, 64);
+		TEST_METHOD(Resize_Increase_Test) {
+			MapChunkStorage * chunks = new MapChunkStorage();
+			Storage storage(1024, 64, chunks);
 			StorageChunk* chunk = storage.allocate(500);
 			bool res = storage.resize(chunk, 700);
+			Assert::IsTrue(chunks->size() == 700/64+1);
 			StorageChunk * chunk1 = storage.allocate(400);
 
 			Assert::IsTrue(res && !chunk1);
 		}
+		TEST_METHOD(Resize_Decrease_Test) {
+			MapChunkStorage * chunks = new MapChunkStorage();
+			Storage storage(1024, 64, chunks);
+			StorageChunk* chunk = storage.allocate(800);
+			bool res = storage.resize(chunk, 500);
+			Assert::IsTrue(chunks->size() == 500 / 64 + 1);
+			StorageChunk * chunk1 = storage.allocate(400);
+
+			Assert::IsTrue(res && chunk1);
+		}
+		TEST_METHOD(Resize_Increase_Overflow_Test) {
+			MapChunkStorage * chunks = new MapChunkStorage();
+			Storage storage(1024, 64, chunks);
+			StorageChunk* chunk = storage.allocate(500);
+			bool res = storage.resize(chunk, 2000);
+			Assert::IsTrue(chunks->size() == 500 / 64 + 1);
+			StorageChunk * chunk1 = storage.allocate(400);
+
+			Assert::IsTrue(!res && chunk1);
+		}
+		
 	};
 }

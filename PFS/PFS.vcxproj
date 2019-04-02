@@ -23,13 +23,16 @@
     <ClCompile Include="MapChunkStorage.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageChunk.cpp" />
+    <ClCompile Include="VirtualByteStorage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ByteStorage.h" />
     <ClInclude Include="ChunkStorage.h" />
     <ClInclude Include="MapChunkStorage.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="StorageChunk.h" />
     <ClInclude Include="StorageTypedef.h" />
+    <ClInclude Include="VirtualByteStorage.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

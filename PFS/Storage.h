@@ -3,9 +3,11 @@
 #include "StorageChunk.h"
 #include "ChunkStorage.h"
 #include "MapChunkStorage.h"
+#include "ByteStorage.h"
+#include "VirtualByteStorage.h"
 
 class Storage {
-	char* bytes;
+	ByteStorage* byte_storage;
 	unsigned int storage_size;
 	StorageFileSize chunk_size;
 	unsigned int avalible_size;
@@ -16,13 +18,12 @@ class Storage {
 	unsigned int delete_chain(StorageChunk * first);
 
 public:
-	Storage(unsigned int size, StorageFileSize chunk_size, ChunkStorage *chunk_storage = new MapChunkStorage());
+	Storage(StorageSize size, StorageFileSize chunk_size, ChunkStorage *chunk_storage = new MapChunkStorage()) : Storage(size, chunk_size, new VirtualByteStorage(size), chunk_storage){}
+	Storage(StorageSize size, StorageFileSize chunk_size, ByteStorage* byte_storage, ChunkStorage *chunk_storage = new MapChunkStorage());
 	~Storage();
 
 	StorageChunk* allocate(StorageFileSize size);
 	void deallocate(StorageChunk* file);
 	bool resize(StorageChunk * file, StorageFileSize new_size);
-
-	char* get_storage() { return bytes; }
 };
 

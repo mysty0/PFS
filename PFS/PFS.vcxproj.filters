@@ -13,36 +13,51 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Storage">
+      <UniqueIdentifier>{9e21d5b9-f1df-4bfa-a3c6-5b7d284b0ca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Storage">
+      <UniqueIdentifier>{150b6c28-05dc-428a-87a0-d34104a38727}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StorageChunk.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MapChunkStorage.cpp">
+      <Filter>Source Files\Storage</Filter>
     </ClCompile>
     <ClCompile Include="Storage.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Storage</Filter>
     </ClCompile>
-    <ClCompile Include="MapChunkStorage.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="StorageChunk.cpp">
+      <Filter>Source Files\Storage</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualByteStorage.cpp">
+      <Filter>Source Files\Storage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StorageChunk.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Storage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StorageTypedef.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ByteStorage.h">
+      <Filter>Header Files\Storage</Filter>
     </ClInclude>
     <ClInclude Include="ChunkStorage.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Storage</Filter>
     </ClInclude>
     <ClInclude Include="MapChunkStorage.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>Header Files\Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="StorageChunk.h">
+      <Filter>Header Files\Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="StorageTypedef.h">
+      <Filter>Header Files\Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualByteStorage.h">
+      <Filter>Header Files\Storage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

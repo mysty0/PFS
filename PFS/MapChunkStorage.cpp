@@ -35,3 +35,7 @@ void MapChunkStorage::remove(StoragePointer pointer){
 	map.erase(pointer);
 	//delete prev;
 }
+
+int MapChunkStorage::size(){
+	return map.size();
+}

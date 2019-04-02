@@ -30,13 +30,20 @@ unsigned int Storage::delete_chain(StorageChunk * first){
 	return count;
 }
 
-Storage::Storage(unsigned int size, unsigned int chunk_size, ChunkStorage* chunk_storage) : storage_size(size), chunk_size(chunk_size), avalible_size(size), chunks(chunk_storage) {
-	bytes = new char[size];
+Storage::Storage(StorageSize size, StorageFileSize chunk_size, ByteStorage* byte_storage, ChunkStorage *chunk_storage):
+	storage_size(size), 
+	chunk_size(chunk_size), 
+	avalible_size(size), 
+	chunks(chunk_storage), 
+	byte_storage(byte_storage) 
+{
+
+	//bytes = new char[size];
 }
 
 
 Storage::~Storage() {
-	delete[] bytes;
+	//delete[] bytes;
 }
 
 StorageChunk * Storage::allocate(StorageFileSize size) {
@@ -65,16 +72,26 @@ void Storage::deallocate(StorageChunk* file){
 }
 
 bool Storage::resize(StorageChunk * file, StorageFileSize new_size){
-	if (file->size == new_size) return true;
+	if (new_size == 0) {
+		deallocate(file);
+		return true;
+	}
+	else if (file->size == new_size) return true;
 	else if (file->size > new_size) {
 		StorageFileSize rem_size = new_size;
 		StorageChunk *cur = file;
+
+		avalible_size += file->size - new_size;
+
 		while (cur) {
 			cur->size = rem_size;
 			rem_size -= chunk_size;
 			cur = cur->next;
 			if (rem_size < chunk_size) {
-				delete_chain(cur);
+				if (cur && cur->next) {
+					delete_chain(cur->next);
+					cur->next = nullptr;
+				}
 				break;
 			}
 		}

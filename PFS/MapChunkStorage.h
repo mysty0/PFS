@@ -20,5 +20,7 @@ public:
 	virtual bool is_empty() override;
 	virtual void remove(StoragePointer pointer) override;
 
+	int size();
+
 };
 
