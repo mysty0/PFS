@@ -15,5 +15,7 @@ public:
 	// Inherited via ByteStorage
 	virtual bool write(StoragePointer pointer, char * bytes, StorageFileSize size) override;
 	virtual void read(StoragePointer pointer, char* buffer, StorageFileSize size) override;
+
+	virtual void wipe() override;
 };
 

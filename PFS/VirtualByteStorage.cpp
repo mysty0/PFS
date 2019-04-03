@@ -13,11 +13,15 @@ VirtualByteStorage::~VirtualByteStorage(){
 
 bool VirtualByteStorage::write(StoragePointer pointer, char * bytes, StorageFileSize size){
 	if (pointer + size >= storage_size) return false;
-	std::memcpy(&bytes[pointer], bytes, size);
-	return false;
+	std::memcpy(this->bytes + pointer, bytes, size);
+	return true;
 }
 
 void VirtualByteStorage::read(StoragePointer pointer, char* buffer, StorageFileSize size){
 	if (pointer + size >= storage_size) return;
 	std::memcpy(buffer, &bytes[pointer], size);
+}
+
+void VirtualByteStorage::wipe(){
+	std::memset(bytes, 0, storage_size);
 }

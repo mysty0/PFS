@@ -44,6 +44,9 @@ Storage::Storage(StorageSize size, StorageFileSize chunk_size, ByteStorage* byte
 
 Storage::~Storage() {
 	//delete[] bytes;
+	delete byte_storage;
+	delete chunks;
+
 }
 
 StorageChunk * Storage::allocate(StorageFileSize size) {
@@ -119,4 +122,30 @@ bool Storage::resize(StorageChunk * file, StorageFileSize new_size){
 		return true;
 	}
 	
+}
+
+void Storage::read(StorageChunk * file, StoragePointer pointer, char * buffer, StorageFileSize size){
+	StoragePointer index = 0;
+	StorageChunk *cur = file;
+	while (cur) {
+		byte_storage->read(cur->pointer*chunk_size, &buffer[index], (chunk_size > (size - index)) ? (size - index) : chunk_size);
+		if ((size - index) <= chunk_size || !cur->next) return;
+		index += chunk_size;
+		cur = cur->next;
+	}
+
+}
+
+bool Storage::write(StorageChunk * file, StoragePointer pointer, char * bytes, StorageFileSize size){
+	StoragePointer index = 0;
+	StorageChunk *cur = file;
+
+	while (index < size) {
+		byte_storage->write(cur->pointer*chunk_size, bytes + index, (chunk_size > (size - index)) ? (size - index) : chunk_size);
+		if ((size - index) <= chunk_size) return true;
+		if (!cur->next) return false;
+		index += chunk_size;	
+		cur = cur->next;
+	}
+	return false;
 }

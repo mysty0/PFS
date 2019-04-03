@@ -25,5 +25,8 @@ public:
 	StorageChunk* allocate(StorageFileSize size);
 	void deallocate(StorageChunk* file);
 	bool resize(StorageChunk * file, StorageFileSize new_size);
+
+	void read(StorageChunk * file, StoragePointer pointer, char * buffer, StorageFileSize size);
+	bool write(StorageChunk * file, StoragePointer pointer, char* bytes, StorageFileSize size);
 };
 
