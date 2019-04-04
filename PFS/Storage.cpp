@@ -149,3 +149,8 @@ bool Storage::write(StorageChunk * file, StoragePointer pointer, char * bytes, S
 	}
 	return false;
 }
+
+void Storage::wipe(){
+	byte_storage->wipe();
+}
+

@@ -2,9 +2,9 @@
 #include <iostream>
 #include "CppUnitTest.h"
 #include "../PFS/Storage.h"
-#include "../PFS/Storage.cpp"
+
 #include "../PFS/StorageChunk.h"
-#include "../PFS/StorageChunk.cpp"
+
 #include "../PFS/MapChunkStorage.cpp"
 #include "../PFS/VirtualByteStorage.cpp"
 

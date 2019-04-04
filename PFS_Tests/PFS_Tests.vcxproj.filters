@@ -29,5 +29,8 @@
     <ClCompile Include="storage_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="file_descriptor_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

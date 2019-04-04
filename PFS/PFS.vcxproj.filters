@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Storage">
       <UniqueIdentifier>{150b6c28-05dc-428a-87a0-d34104a38727}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Files">
+      <UniqueIdentifier>{9a6c6838-61e4-4b47-b21f-53f2fa978f10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Files">
+      <UniqueIdentifier>{0277e88b-66f9-4683-9305-ef88994bd366}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -35,6 +41,15 @@
     </ClCompile>
     <ClCompile Include="VirtualByteStorage.cpp">
       <Filter>Source Files\Storage</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>Source Files\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Path.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileDescriptor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +73,15 @@
     </ClInclude>
     <ClInclude Include="VirtualByteStorage.h">
       <Filter>Header Files\Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Header Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileDescriptor.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
