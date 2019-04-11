@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="File.cpp" />
+    <ClCompile Include="FileByteStream.cpp" />
     <ClCompile Include="FileDescriptor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapChunkStorage.cpp" />
@@ -32,7 +33,10 @@
     <ClInclude Include="ByteStorage.h" />
     <ClInclude Include="ChunkStorage.h" />
     <ClInclude Include="File.h" />
+    <ClInclude Include="FileByteStream.h" />
+    <ClInclude Include="FileDataStream.h" />
     <ClInclude Include="FileDescriptor.h" />
+    <ClInclude Include="FileTypedef.h" />
     <ClInclude Include="MapChunkStorage.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Storage.h" />

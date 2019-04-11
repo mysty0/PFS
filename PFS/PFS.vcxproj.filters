@@ -49,7 +49,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileDescriptor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileByteStream.cpp">
+      <Filter>Source Files\Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -81,7 +84,16 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FileDescriptor.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileDataStream.h">
+      <Filter>Header Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileByteStream.h">
+      <Filter>Header Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileTypedef.h">
+      <Filter>Header Files\Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
