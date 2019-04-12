@@ -21,12 +21,14 @@ public:
 	bool write(StoragePointer pointer, char byte);
 	bool write(StoragePointer pointer, char *bytes, StorageFileSize len);
 
-	char read(StoragePointer pointer);
-	char* read(StoragePointer pointer, StorageFileSize len);
+	char read(StoragePointer pointer) const;
+	char* read(StoragePointer pointer, StorageFileSize len) const;
 
-	bool is_created();
+	bool is_created() const;
 
-	StorageFileSize get_size();
+	StorageFileSize get_size() const;
+
+	StoragePointer get_pointer() const;
 
 };
 

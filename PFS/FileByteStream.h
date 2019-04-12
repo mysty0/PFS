@@ -1,10 +1,12 @@
 #pragma once
 #include "FileDataStream.h"
 #include "FileTypedef.h"
+#include "FileDescriptor.h"
 
 class FileByteStream :
 	public FileDataStream
 {
+	FileDescriptor *descriptor;
 public:
 	FileByteStream(FileDescriptor * descriptor);
 	~FileByteStream();

@@ -25,6 +25,18 @@
     <Filter Include="Source Files\Files">
       <UniqueIdentifier>{0277e88b-66f9-4683-9305-ef88994bd366}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Files\Directory">
+      <UniqueIdentifier>{2251e581-9c7e-4a3b-91c9-606e75bfa095}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Files\Directory">
+      <UniqueIdentifier>{a3c6a8fc-72c7-43dc-af77-43cac79bec6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Files\Permissions">
+      <UniqueIdentifier>{33ddaa49-e6df-4ce3-9a13-b28596ef89a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Files\Permissions">
+      <UniqueIdentifier>{bd2e36f2-11aa-4d45-a037-448d1777b66d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +65,21 @@
     </ClCompile>
     <ClCompile Include="FileByteStream.cpp">
       <Filter>Source Files\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Directory.cpp">
+      <Filter>Source Files\Files\Directory</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectoryStream.cpp">
+      <Filter>Source Files\Files\Directory</Filter>
+    </ClCompile>
+    <ClCompile Include="FilePermissions.cpp">
+      <Filter>Source Files\Files\Permissions</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectoryPermissions.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +121,21 @@
     </ClInclude>
     <ClInclude Include="FileTypedef.h">
       <Filter>Header Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Directory.h">
+      <Filter>Header Files\Files\Directory</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectoryStream.h">
+      <Filter>Header Files\Files\Directory</Filter>
+    </ClInclude>
+    <ClInclude Include="FilePermissions.h">
+      <Filter>Header Files\Files\Permissions</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectoryPermissions.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

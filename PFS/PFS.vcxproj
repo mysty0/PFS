@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,9 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Directory.cpp" />
+    <ClCompile Include="DirectoryPermissions.cpp" />
+    <ClCompile Include="DirectoryStream.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="FileByteStream.cpp" />
     <ClCompile Include="FileDescriptor.cpp" />
+    <ClCompile Include="FilePermissions.cpp" />
+    <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapChunkStorage.cpp" />
     <ClCompile Include="Path.cpp" />
@@ -32,10 +37,15 @@
   <ItemGroup>
     <ClInclude Include="ByteStorage.h" />
     <ClInclude Include="ChunkStorage.h" />
+    <ClInclude Include="Directory.h" />
+    <ClInclude Include="DirectoryPermissions.h" />
+    <ClInclude Include="DirectoryStream.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="FileByteStream.h" />
     <ClInclude Include="FileDataStream.h" />
     <ClInclude Include="FileDescriptor.h" />
+    <ClInclude Include="FilePermissions.h" />
+    <ClInclude Include="FileSystem.h" />
     <ClInclude Include="FileTypedef.h" />
     <ClInclude Include="MapChunkStorage.h" />
     <ClInclude Include="Path.h" />

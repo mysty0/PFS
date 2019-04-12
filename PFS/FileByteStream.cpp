@@ -2,7 +2,7 @@
 
 
 
-FileByteStream::FileByteStream(FileDescriptor * descriptor): FileDataStream(descriptor){
+FileByteStream::FileByteStream(FileDescriptor * descriptor): descriptor(descriptor){
 	this->descriptor = descriptor;
 }
 

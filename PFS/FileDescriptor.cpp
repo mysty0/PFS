@@ -49,7 +49,7 @@ bool FileDescriptor::write(StoragePointer pointer, char * bytes, StorageFileSize
 	return storage->write(root_chunk, pointer, bytes, len);
 }
 
-char FileDescriptor::read(StoragePointer pointer){
+char FileDescriptor::read(StoragePointer pointer) const {
 	if (!root_chunk) return '\0';
 	char *res_arr = read(pointer, 1);
 	char res = *res_arr;
@@ -57,17 +57,21 @@ char FileDescriptor::read(StoragePointer pointer){
 	return res;
 }
 
-char * FileDescriptor::read(StoragePointer pointer, StorageFileSize len){
+char * FileDescriptor::read(StoragePointer pointer, StorageFileSize len) const {
 	if (!root_chunk) return nullptr;
 	char*res = new char[len];
 	storage->read(root_chunk, pointer, res, len);
 	return res;
 }
 
-bool FileDescriptor::is_created(){
+bool FileDescriptor::is_created()  const {
 	return root_chunk != nullptr;
 }
 
-StorageFileSize FileDescriptor::get_size(){
+StorageFileSize FileDescriptor::get_size()  const {
 	return file_size;
+}
+
+StoragePointer FileDescriptor::get_pointer()  const {
+	return root_chunk->pointer;
 }
