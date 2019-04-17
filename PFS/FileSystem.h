@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 
 #include "Storage.h"
@@ -6,6 +7,7 @@
 #include "FileTypedef.h"
 #include "Path.h"
 #include "Directory.h"
+#include "DirectoryStream.h"
 
 class FileSystem{
 	Directory *root_dir;
@@ -15,11 +17,12 @@ public:
 	FileSystem();
 	~FileSystem();
 
-	File create_file(Path path, std::string name);
-	Directory create_directory(Path path, std::string name);
+	File *create_file(Path path, std::string name);
+	Directory *create_directory(Path path, std::string name);
 
-	void move(FileId file, Path path);
-	void rename(FileId file, std::string new_name);
-	void detlete(FileId file);
+	void move(File *file, Path path);
+	void rename(File *file, std::string new_name);
+	void delete_file(File *file);
+
+	Directory *get_directory(Path path, bool create_dirs);
 };
-

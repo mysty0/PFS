@@ -2,8 +2,9 @@
 
 
 
-File::File(Storage * storage){
+File::File(Storage * storage, Path path): path(path){
 	this->descripor = FileDescriptor(storage);
+	create();
 }
 
 
@@ -15,8 +16,12 @@ bool File::create(){
 	return descripor.create(default_file_size);
 }
 
-FileDataStream File::open(char flags){
-	return FileByteStream(&descripor);
+void File::delete_file(){
+	descripor.delete_file();
+}
+
+FileDataStream *File::open(char flags){
+	return new FileByteStream(&descripor);
 }
 
 bool File::is_directory() const{
@@ -58,6 +63,14 @@ FilePermissions File::get_permissions() const{
 
 FileId File::get_id() const {
 	return descripor.get_pointer();
+}
+
+void File::set_path(Path path){
+	this->path = path;
+}
+
+Path File::get_path() const{
+	return path;
 }
 
 

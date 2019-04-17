@@ -2,15 +2,16 @@
 #include <vector>
 #include <string>
 
-#include "Directory.h"
-class Path
-{
-	std::vector<Directory> directories;
+class Path{
+	std::vector<std::string> directories;
 public:
-	Path(std::vector<Directory> directories);
+	Path();
+	Path(std::vector<std::string> directories);
 	~Path();
 
-	std::vector<Directory> get_directories() const;
+	std::vector<std::string> get_directories() const;
 	std::string to_string() const;
+
+	Path operator+(std::string dir);
 };
 

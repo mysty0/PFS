@@ -73,5 +73,6 @@ StorageFileSize FileDescriptor::get_size()  const {
 }
 
 StoragePointer FileDescriptor::get_pointer()  const {
+	if (root_chunk == nullptr) return 0;
 	return root_chunk->pointer;
 }

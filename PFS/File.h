@@ -1,10 +1,12 @@
 #pragma once
+
 #include "Storage.h"
 #include "FileDescriptor.h"
 #include "FileDataStream.h"
 #include "FileByteStream.h"
 #include "FileTypedef.h"
 #include "FilePermissions.h"
+#include "Path.h"
 
 #include <ctime>
 #include <string>
@@ -13,20 +15,22 @@ class File{
 	const FileSize default_file_size = 1;
 
 	std::string name;
-	
+	Path path;
 	std::time_t created_date;
 	std::time_t modified_date;
 
 	FilePermissions *permissions;
 
 	FileDescriptor descripor = NULL;
+
 public:
-	File(Storage * storage);
+	File(Storage * storage, Path path);
 	~File();
 
 	virtual bool create();
+	void delete_file();
 
-	virtual FileDataStream open(char flags);
+	virtual FileDataStream *open(char flags);
 
 	virtual bool is_directory() const;
 
@@ -43,6 +47,7 @@ public:
 	virtual FilePermissions get_permissions() const;
 
 	FileId get_id() const;
+	void set_path(Path path);
+	Path get_path() const;
 
 };
-
