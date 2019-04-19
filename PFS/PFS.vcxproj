@@ -26,12 +26,14 @@
     <ClCompile Include="FileByteStream.cpp" />
     <ClCompile Include="FileDescriptor.cpp" />
     <ClCompile Include="FilePermissions.cpp" />
+    <ClCompile Include="FileStream.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapChunkStorage.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageChunk.cpp" />
+    <ClCompile Include="StreamTable.cpp" />
     <ClCompile Include="VirtualByteStorage.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +47,7 @@
     <ClInclude Include="FileDataStream.h" />
     <ClInclude Include="FileDescriptor.h" />
     <ClInclude Include="FilePermissions.h" />
+    <ClInclude Include="FileStream.h" />
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="FileTypedef.h" />
     <ClInclude Include="MapChunkStorage.h" />
@@ -52,6 +55,7 @@
     <ClInclude Include="Storage.h" />
     <ClInclude Include="StorageChunk.h" />
     <ClInclude Include="StorageTypedef.h" />
+    <ClInclude Include="StreamTable.h" />
     <ClInclude Include="VirtualByteStorage.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -113,6 +117,8 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <ShowIncludes>true</ShowIncludes>
+      <PreprocessorDefinitions>MAXAPI_USE_MSCRT;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

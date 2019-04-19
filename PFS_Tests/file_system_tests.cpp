@@ -10,6 +10,8 @@
 #include "../PFS/FileByteStream.cpp"
 #include "../PFS/Directory.cpp"
 #include "../PFS/DirectoryStream.cpp"
+#include "../PFS/StreamTable.cpp"
+#include "../PFS/FileStream.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -49,12 +51,23 @@ namespace PFS_Tests {
 		}
 		TEST_METHOD(Write_To_File_Test) {
 			FileSystem system = FileSystem();
-			File *file = system.create_file(Path(), "test");
-			FileByteStream *stream = (FileByteStream*)file->open(0);
+			File* file = system.create_file(Path(), "test");
+			FileByteStream* stream = (FileByteStream*)file->open(0);
 			char bytes[] = "test_1";
 			stream->write(0, bytes, 6);
-			char *read_bytes = stream->read(0, 6);
+			char* read_bytes = stream->read(0, 6);
 			Assert::IsTrue(!strncmp(bytes, read_bytes, 6));
+			delete read_bytes;
+		}
+		TEST_METHOD(Write_To_File_Stream_Test) {
+			FileSystem system = FileSystem();
+			File* file = system.create_file(Path(), "test");
+			FileByteStream* stream = file->open_stream("test");
+			char bytes[] = "test_1";
+			bool res = stream->write(0, bytes, 6);
+			char* read_bytes = stream->read(0, 6);
+			Assert::IsTrue(!strncmp(bytes, read_bytes, 6) && res);
+			delete read_bytes;
 		}
 	};
 

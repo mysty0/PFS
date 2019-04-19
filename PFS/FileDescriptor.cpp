@@ -9,6 +9,11 @@ FileDescriptor::FileDescriptor(Storage * storage, StorageFileSize size) : storag
 	create(size);
 }
 
+FileDescriptor::FileDescriptor(Storage* storage, StorageChunk* root_chunk) : storage(storage) {
+	file_size = root_chunk->size;
+	this->root_chunk = root_chunk;
+}
+
 
 
 FileDescriptor::~FileDescriptor()
@@ -75,4 +80,8 @@ StorageFileSize FileDescriptor::get_size()  const {
 StoragePointer FileDescriptor::get_pointer()  const {
 	if (root_chunk == nullptr) return 0;
 	return root_chunk->pointer;
+}
+
+Storage* FileDescriptor::get_storage() const{
+	return storage;
 }

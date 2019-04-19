@@ -9,8 +9,8 @@ FileSystem::FileSystem(): storage(Storage(1024, 64)){
 }
 
 
-FileSystem::~FileSystem()
-{
+FileSystem::~FileSystem(){
+	delete root_dir;
 }
 
 Directory *FileSystem::get_directory(Path path, bool create_dirs) {

@@ -7,8 +7,8 @@ MapChunkStorage::MapChunkStorage()
 }
 
 
-MapChunkStorage::~MapChunkStorage()
-{
+MapChunkStorage::~MapChunkStorage(){
+	for (const std::pair<StoragePointer, StorageChunk*> chunk : map) delete chunk.second;
 }
 
 StorageChunk * MapChunkStorage::get(StoragePointer pointer){

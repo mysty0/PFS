@@ -5,12 +5,13 @@
 
 class FileDescriptor{
 	Storage * storage;
-	StorageChunk* root_chunk;
-	StorageFileSize file_size;
+	StorageChunk* root_chunk = nullptr;
+	StorageFileSize file_size = 0;
 
 public:
 	FileDescriptor(Storage * storage);
 	FileDescriptor(Storage * storage, StorageFileSize size);
+	FileDescriptor(Storage * storage, StorageChunk* root_chunk);
 	~FileDescriptor();
 
 	bool create(StorageFileSize size);
@@ -29,6 +30,6 @@ public:
 	StorageFileSize get_size() const;
 
 	StoragePointer get_pointer() const;
-
+	Storage* get_storage() const;
 };
 

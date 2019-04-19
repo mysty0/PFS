@@ -8,6 +8,8 @@ Directory::Directory(Storage *storage, Path path): File(storage, path){
 
 
 Directory::~Directory(){
+	for (const std::pair<FileId, File*>& file : files) delete file.second;
+	//File::~File();
 }
 
 bool Directory::create(){

@@ -137,6 +137,7 @@ void Storage::read(StorageChunk * file, StoragePointer pointer, char * buffer, S
 }
 
 bool Storage::write(StorageChunk * file, StoragePointer pointer, char * bytes, StorageFileSize size){
+	if (file->size < size) if (!resize(file, size)) return false;
 	StoragePointer index = 0;
 	StorageChunk *cur = file;
 

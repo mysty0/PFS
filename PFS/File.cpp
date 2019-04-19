@@ -2,14 +2,14 @@
 
 
 
-File::File(Storage * storage, Path path): path(path){
-	this->descripor = FileDescriptor(storage);
+File::File(Storage * storage, Path path): path(path), stream_table(new StreamTable(storage)), descripor(FileDescriptor(storage)){
 	create();
 }
 
 
 File::~File(){
 	delete this->permissions;
+	delete stream_table;
 }
 
 bool File::create(){
@@ -22,6 +22,12 @@ void File::delete_file(){
 
 FileDataStream *File::open(char flags){
 	return new FileByteStream(&descripor);
+}
+
+FileByteStream* File::open_stream(std::string name){
+	FileStream* stream = stream_table->get_stream(name);
+	if (!stream) stream = stream_table->create_stream(name);
+	return stream->open();
 }
 
 bool File::is_directory() const{

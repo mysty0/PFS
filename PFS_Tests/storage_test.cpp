@@ -125,11 +125,11 @@ namespace PFS_Tests{
 		TEST_METHOD(Write_Overflow_Test) {
 			VirtualByteStorage *byte_storage = new VirtualByteStorage(1024);
 			byte_storage->wipe();
-			Storage storage(20, 10, byte_storage);
+			Storage storage(30, 10, byte_storage);
 			StorageChunk * chunk = storage.allocate(10);
 			char *bytes = "12345678910";
 			bool res = storage.write(chunk, 0, bytes, 11);
-			Assert::IsFalse(res);
+			Assert::IsTrue(res);
 			char *buf = new char[10];
 			byte_storage->read(chunk->pointer * 10, buf, 10);
 			char *zeros = new char[10];

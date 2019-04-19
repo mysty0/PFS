@@ -7,6 +7,7 @@
 #include "FileTypedef.h"
 #include "FilePermissions.h"
 #include "Path.h"
+#include "StreamTable.h"
 
 #include <ctime>
 #include <string>
@@ -19,18 +20,21 @@ class File{
 	std::time_t created_date;
 	std::time_t modified_date;
 
-	FilePermissions *permissions;
+	FilePermissions *permissions = nullptr;
 
-	FileDescriptor descripor = NULL;
+	FileDescriptor descripor;
+
+	StreamTable* stream_table;
 
 public:
 	File(Storage * storage, Path path);
-	~File();
+	virtual ~File();
 
 	virtual bool create();
 	void delete_file();
 
 	virtual FileDataStream *open(char flags);
+	FileByteStream* open_stream(std::string name);
 
 	virtual bool is_directory() const;
 
