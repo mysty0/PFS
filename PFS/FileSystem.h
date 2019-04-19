@@ -8,10 +8,13 @@
 #include "Path.h"
 #include "Directory.h"
 #include "DirectoryStream.h"
+#include "UserTable.h"
 
 class FileSystem{
 	Directory *root_dir;
 	Storage storage;
+
+	UserTable user_table;
 
 public:
 	FileSystem();
@@ -25,4 +28,6 @@ public:
 	void delete_file(File *file);
 
 	Directory *get_directory(Path path, bool create_dirs);
+
+	UserTable* get_user_table();
 };

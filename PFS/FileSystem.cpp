@@ -29,6 +29,10 @@ Directory *FileSystem::get_directory(Path path, bool create_dirs) {
 	return dir;
 }
 
+UserTable* FileSystem::get_user_table(){
+	return &user_table;
+}
+
 File *FileSystem::create_file(Path path, std::string name){
 	File *file = new File(&storage, path);
 	file->set_name(name);

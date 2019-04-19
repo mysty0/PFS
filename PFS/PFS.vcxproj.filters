@@ -43,6 +43,12 @@
     <Filter Include="Header Files\FileStream">
       <UniqueIdentifier>{95bfcdd9-9b8b-468f-bb4a-ec3d2791cd6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Users">
+      <UniqueIdentifier>{a6e00fe4-fba7-471d-ab4e-d08609348d0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Users">
+      <UniqueIdentifier>{ce256d6f-4b23-4e88-94ba-bf47b09c385f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -92,6 +98,12 @@
     </ClCompile>
     <ClCompile Include="StreamTable.cpp">
       <Filter>Source Files\FileStream</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files\Users</Filter>
+    </ClCompile>
+    <ClCompile Include="UserTable.cpp">
+      <Filter>Source Files\Users</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +166,12 @@
     </ClInclude>
     <ClInclude Include="StreamTable.h">
       <Filter>Header Files\FileStream</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Header Files\Users</Filter>
+    </ClInclude>
+    <ClInclude Include="UserTable.h">
+      <Filter>Header Files\Users</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

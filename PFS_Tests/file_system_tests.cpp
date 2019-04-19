@@ -12,6 +12,8 @@
 #include "../PFS/DirectoryStream.cpp"
 #include "../PFS/StreamTable.cpp"
 #include "../PFS/FileStream.cpp"
+#include "../PFS/User.cpp"
+#include "../PFS/UserTable.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -68,6 +70,15 @@ namespace PFS_Tests {
 			char* read_bytes = stream->read(0, 6);
 			Assert::IsTrue(!strncmp(bytes, read_bytes, 6) && res);
 			delete read_bytes;
+		}
+
+		TEST_METHOD(User_Table_Test) {
+			FileSystem system = FileSystem();
+			UserTable* table = system.get_user_table();
+			table->add_user(new User("test", "pub", "priv"));
+			table->add_user(new User("test1", "pub", "priv"));
+			User* user = table->get_user("test");
+			Assert::IsTrue(user->get_name() == "test" && user->get_public_password() == "pub");
 		}
 	};
 

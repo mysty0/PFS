@@ -32,6 +32,7 @@ bool MapChunkStorage::is_empty(){
 
 void MapChunkStorage::remove(StoragePointer pointer){
 	//StorageChunk* prev = get(pointer);
+	//delete map.at(pointer);
 	map.erase(pointer);
 	//delete prev;
 }
