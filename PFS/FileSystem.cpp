@@ -33,13 +33,14 @@ UserTable* FileSystem::get_user_table(){
 	return &user_table;
 }
 
-File *FileSystem::create_file(Path path, std::string name){
+template <class T>
+T *FileSystem::create_file(Path path, std::string name){
 	File *file = new File(&storage, path);
 	file->set_name(name);
 	DirectoryStream *stream = (DirectoryStream*)get_directory(path, true)->open(0);
 	stream->add_file(file);
 	delete stream;
-	return file;
+	return (T*)file;
 }
 
 Directory *FileSystem::create_directory(Path path, std::string name){

@@ -16,5 +16,7 @@ public:
 
 	char read(FileBytePointer pointer);
 	char* read(FileBytePointer pointer, StorageFileSize size);
+
+	FileSize get_size();
 };
 

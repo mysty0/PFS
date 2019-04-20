@@ -14,6 +14,7 @@
 #include "../PFS/FileStream.cpp"
 #include "../PFS/User.cpp"
 #include "../PFS/UserTable.cpp"
+#include "../PFS/SynchronousCryptedFile.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -60,6 +61,7 @@ namespace PFS_Tests {
 			char* read_bytes = stream->read(0, 6);
 			Assert::IsTrue(!strncmp(bytes, read_bytes, 6));
 			delete read_bytes;
+			delete stream;
 		}
 		TEST_METHOD(Write_To_File_Stream_Test) {
 			FileSystem system = FileSystem();
@@ -79,6 +81,23 @@ namespace PFS_Tests {
 			table->add_user(new User("test1", "pub", "priv"));
 			User* user = table->get_user("test");
 			Assert::IsTrue(user->get_name() == "test" && user->get_public_password() == "pub");
+		}
+
+		TEST_METHOD(Crypt_File_Test) {
+			FileSystem system = FileSystem();
+			SynchronousCryptedFile* file = system.create_file<SynchronousCryptedFile>(Path(), "test");
+			FileByteStream* stream = (FileByteStream*)file->open(0);
+			char bytes[] = "test_2";
+			stream->write(0, bytes, 6);
+			file->crypt("123");
+			char* read_bytes = stream->read(0, 6);
+			Assert::IsTrue(strncmp(bytes, read_bytes, 6));
+			delete read_bytes;
+			file->crypt("123");
+			read_bytes = stream->read(0, 6);
+			Assert::IsTrue(!strncmp(bytes, read_bytes, 6));
+
+			delete stream;
 		}
 	};
 

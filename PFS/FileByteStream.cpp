@@ -26,3 +26,7 @@ char FileByteStream::read(FileBytePointer pointer){
 char * FileByteStream::read(FileBytePointer pointer, StorageFileSize size){
 	return descriptor->read(pointer, size);
 }
+
+FileSize FileByteStream::get_size(){
+	return descriptor->get_size();
+}

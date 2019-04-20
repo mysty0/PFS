@@ -105,6 +105,9 @@
     <ClCompile Include="UserTable.cpp">
       <Filter>Source Files\Users</Filter>
     </ClCompile>
+    <ClCompile Include="SynchronousCryptedFile.cpp">
+      <Filter>Source Files\Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteStorage.h">
@@ -172,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="UserTable.h">
       <Filter>Header Files\Users</Filter>
+    </ClInclude>
+    <ClInclude Include="SynchronousCryptedFile.h">
+      <Filter>Header Files\Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

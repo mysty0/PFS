@@ -20,7 +20,8 @@ public:
 	FileSystem();
 	~FileSystem();
 
-	File *create_file(Path path, std::string name);
+	template <class T = File>
+	T *create_file(Path path, std::string name);
 	Directory *create_directory(Path path, std::string name);
 
 	void move(File *file, Path path);
