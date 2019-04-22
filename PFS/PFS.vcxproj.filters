@@ -49,6 +49,15 @@
     <Filter Include="Source Files\Users">
       <UniqueIdentifier>{ce256d6f-4b23-4e88-94ba-bf47b09c385f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Commands">
+      <UniqueIdentifier>{226d0e00-37ac-4632-9760-f069464295b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Commands">
+      <UniqueIdentifier>{326ffb3d-f58b-489b-81d4-9cca7f2abbfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{84d03d57-c746-45ac-b4e9-77a429709b64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -107,6 +116,15 @@
     </ClCompile>
     <ClCompile Include="SynchronousCryptedFile.cpp">
       <Filter>Source Files\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandManager.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="FileListCommand.cpp">
+      <Filter>Source Files\FileStream</Filter>
+    </ClCompile>
+    <ClCompile Include="MakeDirectoryCommand.cpp">
+      <Filter>Source Files\FileStream</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +196,21 @@
     </ClInclude>
     <ClInclude Include="SynchronousCryptedFile.h">
       <Filter>Header Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandManager.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="FileListCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="MakeDirectoryCommand.h">
+      <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

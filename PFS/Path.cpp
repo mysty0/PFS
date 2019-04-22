@@ -6,6 +6,10 @@ Path::Path() : directories(std::vector<std::string>()) {
 Path::Path(std::vector<std::string> directories): directories(directories){
 }
 
+Path::Path(std::string string){
+	split_string(string, directories, '/');
+}
+
 Path::~Path()
 {
 }

@@ -2,11 +2,14 @@
 #include <vector>
 #include <string>
 
+#include "Utils.h"
+
 class Path{
 	std::vector<std::string> directories;
 public:
 	Path();
 	Path(std::vector<std::string> directories);
+	Path(std::string string);
 	~Path();
 
 	std::vector<std::string> get_directories() const;

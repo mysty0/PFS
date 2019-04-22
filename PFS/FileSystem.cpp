@@ -19,6 +19,7 @@ Directory *FileSystem::get_directory(Path path, bool create_dirs) {
 		if (!dir->is_file_exists(cur)) {
 			if (!create_dirs) return false;
 			Directory *new_dir = new Directory(&storage, path + cur);
+			new_dir->set_name(cur);
 			DirectoryStream *stream = (DirectoryStream*)dir->open(0);
 			stream->add_file(new_dir);
 			delete stream;

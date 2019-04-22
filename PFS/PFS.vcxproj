@@ -19,16 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="Directory.cpp" />
     <ClCompile Include="DirectoryPermissions.cpp" />
     <ClCompile Include="DirectoryStream.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="FileByteStream.cpp" />
     <ClCompile Include="FileDescriptor.cpp" />
+    <ClCompile Include="FileListCommand.cpp" />
     <ClCompile Include="FilePermissions.cpp" />
     <ClCompile Include="FileStream.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MakeDirectoryCommand.cpp" />
     <ClCompile Include="MapChunkStorage.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="Storage.cpp" />
@@ -42,6 +45,8 @@
   <ItemGroup>
     <ClInclude Include="ByteStorage.h" />
     <ClInclude Include="ChunkStorage.h" />
+    <ClInclude Include="CommandHandler.h" />
+    <ClInclude Include="CommandManager.h" />
     <ClInclude Include="Directory.h" />
     <ClInclude Include="DirectoryPermissions.h" />
     <ClInclude Include="DirectoryStream.h" />
@@ -49,10 +54,12 @@
     <ClInclude Include="FileByteStream.h" />
     <ClInclude Include="FileDataStream.h" />
     <ClInclude Include="FileDescriptor.h" />
+    <ClInclude Include="FileListCommand.h" />
     <ClInclude Include="FilePermissions.h" />
     <ClInclude Include="FileStream.h" />
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="FileTypedef.h" />
+    <ClInclude Include="MakeDirectoryCommand.h" />
     <ClInclude Include="MapChunkStorage.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Storage.h" />
@@ -62,6 +69,7 @@
     <ClInclude Include="SynchronousCryptedFile.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserTable.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="VirtualByteStorage.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -126,6 +134,9 @@
       <PreprocessorDefinitions>MAXAPI_USE_MSCRT;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
