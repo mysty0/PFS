@@ -10,7 +10,6 @@ SynchronousCryptedFile::SynchronousCryptedFile(Storage* storage, Path path): Fil
 SynchronousCryptedFile::~SynchronousCryptedFile()
 {
 }
-
 void SynchronousCryptedFile::crypt(std::string password){
 	FileByteStream* stream  = (FileByteStream*)this->open(0);
 

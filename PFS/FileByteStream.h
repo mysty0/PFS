@@ -11,8 +11,8 @@ public:
 	FileByteStream(FileDescriptor * descriptor);
 	~FileByteStream();
 
-	bool write(FileBytePointer pointer, char byte);
-	bool write(FileBytePointer pointer, char* bytes, StorageFileSize size);
+	bool write(FileBytePointer pointer, const char byte);
+	bool write(FileBytePointer pointer, const char* bytes, StorageFileSize size);
 
 	char read(FileBytePointer pointer);
 	char* read(FileBytePointer pointer, StorageFileSize size);

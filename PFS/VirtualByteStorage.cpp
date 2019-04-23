@@ -11,7 +11,7 @@ VirtualByteStorage::~VirtualByteStorage(){
 	delete[] bytes;
 }
 
-bool VirtualByteStorage::write(StoragePointer pointer, char * bytes, StorageFileSize size){
+bool VirtualByteStorage::write(StoragePointer pointer, const char * bytes, StorageFileSize size){
 	if (pointer + size >= storage_size) return false;
 	std::memcpy(this->bytes + pointer, bytes, size);
 	return true;

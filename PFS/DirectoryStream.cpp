@@ -37,3 +37,8 @@ void DirectoryStream::delete_file(File * file){
 void DirectoryStream::delete_file(FileId id){
 	files->erase(id);
 }
+
+File* DirectoryStream::get_file(std::string name){
+	for (const std::pair<FileId, File*>& file : *files) if (file.second->get_name() == name) return file.second;
+	return nullptr;
+}

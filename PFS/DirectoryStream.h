@@ -21,4 +21,5 @@ public:
 	void delete_file(std::string name);
 	void delete_file(File* file);
 	void delete_file(FileId id);
+	File* get_file(std::string name);
 };

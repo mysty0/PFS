@@ -24,6 +24,11 @@ std::string Path::to_string() const{
 	return str;
 }
 
+Path Path::parent() const{
+	if (directories.size() == 1) return Path(*this);
+	return Path(std::vector<std::string>(&directories[0], &directories[directories.size() - 2]));
+}
+
 Path Path::operator+(std::string dir){
 	std::vector<std::string> new_path(directories);
 	new_path.push_back(dir);

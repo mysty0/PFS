@@ -11,11 +11,11 @@ FileByteStream::~FileByteStream()
 {
 }
 
-bool FileByteStream::write(FileBytePointer pointer, char byte){
+bool FileByteStream::write(FileBytePointer pointer, const char byte){
 	return descriptor->write(pointer, byte);
 }
 
-bool FileByteStream::write(FileBytePointer pointer, char * bytes, StorageFileSize size){
+bool FileByteStream::write(FileBytePointer pointer, const char * bytes, StorageFileSize size){
 	return descriptor->write(pointer, bytes, size);
 }
 

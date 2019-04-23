@@ -120,11 +120,17 @@
     <ClCompile Include="CommandManager.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="FileListCommand.cpp">
-      <Filter>Source Files\FileStream</Filter>
+    <ClCompile Include="CreateFileCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="MakeDirectoryCommand.cpp">
-      <Filter>Source Files\FileStream</Filter>
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="FileListCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadFileCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +216,12 @@
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="MakeDirectoryCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateFileCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadFileCommand.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>

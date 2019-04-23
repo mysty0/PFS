@@ -10,7 +10,7 @@ public:
 
 	virtual ~ByteStorage() {}
 
-	virtual bool write(StoragePointer pointer, char* bytes, StorageFileSize size) = 0;
+	virtual bool write(StoragePointer pointer, const char* bytes, StorageFileSize size) = 0;
 	virtual void read(StoragePointer pointer, char* buffer, StorageFileSize size) = 0;
 
 	virtual void wipe() = 0;

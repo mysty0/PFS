@@ -127,25 +127,35 @@ bool Storage::resize(StorageChunk * file, StorageFileSize new_size){
 void Storage::read(StorageChunk * file, StoragePointer pointer, char * buffer, StorageFileSize size){
 	StoragePointer index = 0;
 	StorageChunk *cur = file;
+	for (int i = 0; i < pointer / chunk_size; ++i)
+		if (cur->next) cur = cur->next;
+		else return;
+
 	while (cur) {
-		byte_storage->read(cur->pointer*chunk_size, &buffer[index], (chunk_size > (size - index)) ? (size - index) : chunk_size);
+		StoragePointer offset = (index == 0 ? pointer % chunk_size : 0);
+		byte_storage->read(offset+cur->pointer*chunk_size, &buffer[index], (chunk_size > (offset+size - index)) ? (size - index) : chunk_size - offset);
 		if ((size - index) <= chunk_size || !cur->next) return;
-		index += chunk_size;
+		index += chunk_size - offset;
 		cur = cur->next;
 	}
 
 }
 
-bool Storage::write(StorageChunk * file, StoragePointer pointer, char * bytes, StorageFileSize size){
-	if (file->size < size) if (!resize(file, size)) return false;
+bool Storage::write(StorageChunk * file, StoragePointer pointer, const char * bytes, StorageFileSize size){
+	if (file->size < pointer + size) if (!resize(file, pointer + size)) return false;
 	StoragePointer index = 0;
 	StorageChunk *cur = file;
 
+	for (int i = 0; i < pointer / chunk_size; ++i) 
+		if (cur->next) cur = cur->next; 
+		else return false;
+
 	while (index < size) {
-		byte_storage->write(cur->pointer*chunk_size, bytes + index, (chunk_size > (size - index)) ? (size - index) : chunk_size);
+		StoragePointer offset = (index == 0 ? pointer % chunk_size : 0);
+		byte_storage->write(offset + cur->pointer*chunk_size, bytes + index, (chunk_size > (offset + size - index)) ? (size - index) : chunk_size - offset);
 		if ((size - index) <= chunk_size) return true;
 		if (!cur->next) return false;
-		index += chunk_size;	
+		index += chunk_size - offset;
 		cur = cur->next;
 	}
 	return false;

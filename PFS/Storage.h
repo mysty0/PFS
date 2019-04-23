@@ -27,7 +27,7 @@ public:
 	bool resize(StorageChunk * file, StorageFileSize new_size);
 
 	void read(StorageChunk * file, StoragePointer pointer, char * buffer, StorageFileSize size);
-	bool write(StorageChunk * file, StoragePointer pointer, char* bytes, StorageFileSize size);
+	bool write(StorageChunk * file, StoragePointer pointer, const char* bytes, StorageFileSize size);
 
 	void wipe();
 };

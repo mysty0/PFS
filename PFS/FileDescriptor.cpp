@@ -10,7 +10,6 @@ FileDescriptor::FileDescriptor(Storage * storage, StorageFileSize size) : storag
 }
 
 FileDescriptor::FileDescriptor(Storage* storage, StorageChunk* root_chunk) : storage(storage) {
-	file_size = root_chunk->size;
 	this->root_chunk = root_chunk;
 }
 
@@ -23,7 +22,6 @@ FileDescriptor::~FileDescriptor()
 bool FileDescriptor::create(StorageFileSize size){
 	StorageChunk * chunk = storage->allocate(size);
 	if (!chunk) return false;
-	file_size = size;
 	root_chunk = chunk;
 	
 	return true;
@@ -33,7 +31,6 @@ bool FileDescriptor::resize(StorageFileSize new_size){
 	if (!root_chunk) return false;
 	bool res = storage->resize(root_chunk, new_size);
 	if (!res) return false;
-	file_size = new_size;
 
 	return false;
 }
@@ -42,14 +39,13 @@ void FileDescriptor::delete_file(){
 	if (!root_chunk) return;
 	storage->deallocate(root_chunk);
 	root_chunk = nullptr;
-	file_size = 0;
 }
 
-bool FileDescriptor::write(StoragePointer pointer, char byte){
+bool FileDescriptor::write(StoragePointer pointer, const char byte){
 	return write(pointer, &byte, 1);
 }
 
-bool FileDescriptor::write(StoragePointer pointer, char * bytes, StorageFileSize len){
+bool FileDescriptor::write(StoragePointer pointer, const char * bytes, StorageFileSize len){
 	if (!root_chunk) return false;
 	return storage->write(root_chunk, pointer, bytes, len);
 }
@@ -74,7 +70,7 @@ bool FileDescriptor::is_created()  const {
 }
 
 StorageFileSize FileDescriptor::get_size()  const {
-	return file_size;
+	return root_chunk->size;
 }
 
 StoragePointer FileDescriptor::get_pointer()  const {

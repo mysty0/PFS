@@ -2,8 +2,11 @@
 
 
 
-FileSystem::FileSystem(): storage(Storage(1024, 64)){
-	Directory *dir = new Directory(&storage, Path());
+FileSystem::FileSystem(): FileSystem(new Storage(1024, 64)){	
+}
+
+FileSystem::FileSystem(Storage* storage): storage(storage){
+	Directory* dir = new Directory(storage, Path());
 	dir->create();
 	root_dir = dir;
 }
@@ -18,7 +21,7 @@ Directory *FileSystem::get_directory(Path path, bool create_dirs) {
 	for (std::string cur : path.get_directories()) {
 		if (!dir->is_file_exists(cur)) {
 			if (!create_dirs) return false;
-			Directory *new_dir = new Directory(&storage, path + cur);
+			Directory *new_dir = new Directory(storage, path + cur);
 			new_dir->set_name(cur);
 			DirectoryStream *stream = (DirectoryStream*)dir->open(0);
 			stream->add_file(new_dir);
@@ -30,22 +33,19 @@ Directory *FileSystem::get_directory(Path path, bool create_dirs) {
 	return dir;
 }
 
+File* FileSystem::get_file(Path path){
+	DirectoryStream* stream = (DirectoryStream*)get_directory(path.parent(), true)->open(0);
+	File* file = stream->get_file(path.get_directories().back());
+	if (file) return file;
+	return nullptr;
+}
+
 UserTable* FileSystem::get_user_table(){
 	return &user_table;
 }
 
-template <class T>
-T *FileSystem::create_file(Path path, std::string name){
-	File *file = new File(&storage, path);
-	file->set_name(name);
-	DirectoryStream *stream = (DirectoryStream*)get_directory(path, true)->open(0);
-	stream->add_file(file);
-	delete stream;
-	return (T*)file;
-}
-
 Directory *FileSystem::create_directory(Path path, std::string name){
-	Directory *dir = new  Directory(&storage, path + name);
+	Directory *dir = new  Directory(storage, path + name);
 	dir->set_name(name);
 	DirectoryStream *stream = (DirectoryStream*)get_directory(path, true)->open(0);
 	stream->add_file(dir);

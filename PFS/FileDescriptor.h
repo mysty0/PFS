@@ -6,7 +6,6 @@
 class FileDescriptor{
 	Storage * storage;
 	StorageChunk* root_chunk = nullptr;
-	StorageFileSize file_size = 0;
 
 public:
 	FileDescriptor(Storage * storage);
@@ -19,8 +18,8 @@ public:
 
 	void delete_file();
 
-	bool write(StoragePointer pointer, char byte);
-	bool write(StoragePointer pointer, char *bytes, StorageFileSize len);
+	bool write(StoragePointer pointer, const char byte);
+	bool write(StoragePointer pointer, const char *bytes, StorageFileSize len);
 
 	char read(StoragePointer pointer) const;
 	char* read(StoragePointer pointer, StorageFileSize len) const;

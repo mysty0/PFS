@@ -15,6 +15,9 @@ public:
 	std::vector<std::string> get_directories() const;
 	std::string to_string() const;
 
+	Path parent() const;
+
 	Path operator+(std::string dir);
+
 };
 

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="CreateFileCommand.cpp" />
     <ClCompile Include="Directory.cpp" />
     <ClCompile Include="DirectoryPermissions.cpp" />
     <ClCompile Include="DirectoryStream.cpp" />
@@ -34,6 +35,7 @@
     <ClCompile Include="MakeDirectoryCommand.cpp" />
     <ClCompile Include="MapChunkStorage.cpp" />
     <ClCompile Include="Path.cpp" />
+    <ClCompile Include="ReadFileCommand.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageChunk.cpp" />
     <ClCompile Include="StreamTable.cpp" />
@@ -47,6 +49,7 @@
     <ClInclude Include="ChunkStorage.h" />
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="CreateFileCommand.h" />
     <ClInclude Include="Directory.h" />
     <ClInclude Include="DirectoryPermissions.h" />
     <ClInclude Include="DirectoryStream.h" />
@@ -62,6 +65,7 @@
     <ClInclude Include="MakeDirectoryCommand.h" />
     <ClInclude Include="MapChunkStorage.h" />
     <ClInclude Include="Path.h" />
+    <ClInclude Include="ReadFileCommand.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="StorageChunk.h" />
     <ClInclude Include="StorageTypedef.h" />
