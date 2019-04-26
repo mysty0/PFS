@@ -157,6 +157,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bigint_test.cpp" />
     <ClCompile Include="file_descriptor_test.cpp" />
     <ClCompile Include="file_system_tests.cpp" />
     <ClCompile Include="stdafx.cpp">

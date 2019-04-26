@@ -27,3 +27,7 @@ User* UserTable::get_user(std::string name){
 	for (std::vector<User*>::iterator iter = users.begin(); iter != users.end(); iter++)
 		if ((*iter)->get_name() == name) return (*iter);
 }
+
+std::vector<User*> UserTable::get_users(){
+	return std::vector<User*>(users);
+}

@@ -6,12 +6,12 @@
 #include "FileByteStream.h"
 
 
-class SynchronousCryptedFile :
+class SymmetricCryptedFile :
 	public File{
 
 public:
-	SynchronousCryptedFile(Storage* storage, Path path);
-	~SynchronousCryptedFile();
+	SymmetricCryptedFile(Storage* storage, Path path);
+	~SymmetricCryptedFile();
 
 	void crypt(std::string password);
 };

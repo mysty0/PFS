@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AsymmetricCryptedFile.cpp" />
+    <ClCompile Include="BigInt.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CreateFileCommand.cpp" />
     <ClCompile Include="Directory.cpp" />
@@ -39,12 +41,14 @@
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageChunk.cpp" />
     <ClCompile Include="StreamTable.cpp" />
-    <ClCompile Include="SynchronousCryptedFile.cpp" />
+    <ClCompile Include="SymmetricCryptedFile.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserTable.cpp" />
     <ClCompile Include="VirtualByteStorage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AsymmetricCryptedFile.h" />
+    <ClInclude Include="BigInt.h" />
     <ClInclude Include="ByteStorage.h" />
     <ClInclude Include="ChunkStorage.h" />
     <ClInclude Include="CommandHandler.h" />
@@ -70,7 +74,7 @@
     <ClInclude Include="StorageChunk.h" />
     <ClInclude Include="StorageTypedef.h" />
     <ClInclude Include="StreamTable.h" />
-    <ClInclude Include="SynchronousCryptedFile.h" />
+    <ClInclude Include="SymmetricCryptedFile.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserTable.h" />
     <ClInclude Include="Utils.h" />

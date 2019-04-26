@@ -14,7 +14,7 @@
 #include "../PFS/FileStream.cpp"
 #include "../PFS/User.cpp"
 #include "../PFS/UserTable.cpp"
-#include "../PFS/SynchronousCryptedFile.cpp"
+#include "../PFS/SymmetricCryptedFile.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -85,7 +85,7 @@ namespace PFS_Tests {
 
 		TEST_METHOD(Crypt_File_Test) {
 			FileSystem system = FileSystem();
-			SynchronousCryptedFile* file = system.create_file<SynchronousCryptedFile>(Path(), "test");
+			SymmetricCryptedFile* file = system.create_file<SymmetricCryptedFile>(Path(), "test");
 			FileByteStream* stream = (FileByteStream*)file->open(0);
 			char bytes[] = "test_2";
 			stream->write(0, bytes, 6);

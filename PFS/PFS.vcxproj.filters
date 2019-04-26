@@ -114,9 +114,6 @@
     <ClCompile Include="UserTable.cpp">
       <Filter>Source Files\Users</Filter>
     </ClCompile>
-    <ClCompile Include="SynchronousCryptedFile.cpp">
-      <Filter>Source Files\Files</Filter>
-    </ClCompile>
     <ClCompile Include="CommandManager.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
@@ -131,6 +128,15 @@
     </ClCompile>
     <ClCompile Include="ReadFileCommand.cpp">
       <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="SymmetricCryptedFile.cpp">
+      <Filter>Source Files\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BigInt.cpp">
+      <Filter>Source Files\Users</Filter>
+    </ClCompile>
+    <ClCompile Include="AsymmetricCryptedFile.cpp">
+      <Filter>Source Files\Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,9 +206,6 @@
     <ClInclude Include="UserTable.h">
       <Filter>Header Files\Users</Filter>
     </ClInclude>
-    <ClInclude Include="SynchronousCryptedFile.h">
-      <Filter>Header Files\Files</Filter>
-    </ClInclude>
     <ClInclude Include="CommandHandler.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
@@ -223,6 +226,15 @@
     </ClInclude>
     <ClInclude Include="ReadFileCommand.h">
       <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="SymmetricCryptedFile.h">
+      <Filter>Header Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BigInt.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="AsymmetricCryptedFile.h">
+      <Filter>Header Files\Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
