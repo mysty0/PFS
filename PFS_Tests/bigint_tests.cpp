@@ -21,6 +21,15 @@ namespace PFS_Tests {
 			Assert::AreEqual(std::to_string((long long)312143423 * 54099734), std::to_string(r.value()));
 		}
 
+		TEST_METHOD(Multiply_Ordinary_Test) {
+			BigInt a(312143423);
+			long long b(54099734);
+
+			BigInt r = a * b;
+
+			Assert::AreEqual(std::to_string((long long)312143423 * 54099734), std::to_string(r.value()));
+		}
+
 		TEST_METHOD(Multiply_Diff_Size_Test) {
 			BigInt a(31214);
 			BigInt b(54099734);
@@ -42,6 +51,15 @@ namespace PFS_Tests {
 		TEST_METHOD(Plus_Test) {
 			BigInt a(67567243242);
 			BigInt b(329343328);
+
+			BigInt r = a + b;
+
+			Assert::AreEqual(std::to_string((long long)67567243242 + 329343328), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Plus_Ordinary_Test) {
+			BigInt a(67567243242);
+			long long b(329343328);
 
 			BigInt r = a + b;
 
@@ -72,6 +90,14 @@ namespace PFS_Tests {
 
 			Assert::IsTrue((a > b) == (345242342 > 93437848923847));
 		}
+
+		TEST_METHOD(Is_Greater_Ordinary_Test) {
+			BigInt a(345242342);
+			long long b(93437848923847);
+
+			Assert::IsTrue((a > b) == (345242342 > 93437848923847));
+		}
+
 		TEST_METHOD(Is_Greater1_Test) {
 			BigInt a(999374737);
 			BigInt b(2132334);
@@ -88,6 +114,15 @@ namespace PFS_Tests {
 		TEST_METHOD(Minus_Test) {
 			BigInt a(100);
 			BigInt b(10);
+
+			BigInt r = a - b;
+
+			Assert::AreEqual(std::to_string((long long)100 - 10), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Minus_Ordinary_Test) {
+			BigInt a(100);
+			long long b(10);
 
 			BigInt r = a - b;
 

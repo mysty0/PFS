@@ -7,9 +7,8 @@ BigInt::BigInt()
 }
 
 
-BigInt::BigInt(long long n){
-	if (n < 0) negative = true;
-	
+BigInt::BigInt(unsigned long long n){
+
 	while (n != 0) {
 		data.push_back(n % 10);
 		n /= 10;
@@ -108,6 +107,17 @@ BigInt BigInt::operator-(const BigInt& in) const {
 	return (*this) + (-in);
 }
 
+BigInt BigInt::operator%(const BigInt& div) const{
+	if ((*this) < div) return BigInt(*this);
+	BigInt dividend(*this);
+	BigInt quotient(0);
+	while (dividend >= div) {
+		dividend -= div;
+		++quotient;
+	}
+	return dividend;
+}
+
 BigInt& BigInt::operator*=(const BigInt& in){
 	*this = (*this) * in;
 	return *this;
@@ -201,6 +211,11 @@ bool BigInt::operator==(const BigInt& in) const{
 
 bool BigInt::operator!=(const BigInt& lsh) const{
 	return !((*this) == lsh);
+}
+
+bool BigInt::is_even() const{
+	if (data.size() == 0) return true;
+	return (data.back() & 1) == 0;
 }
 
 char& BigInt::operator[](int i){

@@ -35,7 +35,10 @@
     <ClCompile Include="file_system_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bigint_test.cpp">
+    <ClCompile Include="bigint_tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="prime_generator_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

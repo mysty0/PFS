@@ -1,8 +1,11 @@
 #include "User.h"
 
-
-User::User(std::string name, std::string public_password, std::string private_password): name(name), public_password(public_password), private_password(private_password)
+User::User(std::string name, BigInt public_key, BigInt private_key, BigInt n) : name(name), public_key(public_key), private_key(private_key), n(n)
 {
+}
+
+User::User(std::string name): name(name){
+	AsymmetricCryptor::generate_keys(public_key, private_key, n);
 }
 
 User::~User()
@@ -13,14 +16,12 @@ std::string User::get_name() const{
 	return name;
 }
 
-std::string User::get_public_password() const{
-	return public_password;
+BigInt User::get_public_key() const {
+	return public_key;
 }
-
-long long User::crypt_key(long long key, long long n){
-	long long pkey = 0;
-	for (char c : private_password) pkey += (int)c;
-	long long res = 1;
-	for (int i = 0; i < pkey; ++i) res *= key;
-	return res % n;
+BigInt User::get_private_key() const {
+	return private_key;
+}
+BigInt User::get_n() const {
+	return n;
 }

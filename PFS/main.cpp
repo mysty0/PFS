@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <time.h>
 
 #include "StorageChunk.h"
 #include "Storage.h"
@@ -11,8 +13,18 @@
 #include "MakeDirectoryCommand.h"
 #include "CreateFileCommand.h"
 #include "ReadFileCommand.h"
+#include "PrimeGenerator.h"
+#include "AsymmetricCryptor.h"
 
 using namespace std;
+
+
+void prime_gen() {
+	for (int i = 0; i < 100; ++i) {
+		std::cout << PrimeGenerator::generate_prime(100000000000000, 10000000, 128) << std::endl;
+		std::cout << "Primes cache: " << PrimeGenerator::prime_cache_size() << " non prime: " << PrimeGenerator::non_prime_cache_size() << std::endl;
+	}
+}
 
 int main() {
 	//Storage storage(1024, 64);
@@ -20,6 +32,17 @@ int main() {
 	//cout << chunk;
 	//File* file = new File(&storage, Path());
 	//delete file;
+	//PrimeGenerator::is_prime(11);
+
+	srand(time(NULL));
+
+	BigInt pub, priv, n;
+	AsymmetricCryptor::generate_keys(pub, priv, n);
+
+	cout << pub.value() << " " << priv.value() << " " << n.value();
+
+	return 0;
+
 	FileSystem fs = FileSystem();
 	
 	File *file = fs.create_directory(Path(), "test");

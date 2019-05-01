@@ -157,9 +157,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bigint_test.cpp" />
+    <ClCompile Include="bigint_tests.cpp" />
     <ClCompile Include="file_descriptor_test.cpp" />
     <ClCompile Include="file_system_tests.cpp" />
+    <ClCompile Include="prime_generator_tests.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -58,6 +58,9 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{84d03d57-c746-45ac-b4e9-77a429709b64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{b4c04e5c-ddce-4222-930f-d4b0ac311636}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -132,11 +135,17 @@
     <ClCompile Include="SymmetricCryptedFile.cpp">
       <Filter>Source Files\Files</Filter>
     </ClCompile>
-    <ClCompile Include="BigInt.cpp">
-      <Filter>Source Files\Users</Filter>
-    </ClCompile>
     <ClCompile Include="AsymmetricCryptedFile.cpp">
       <Filter>Source Files\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BigInt.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="AsymmetricCryptor.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimeGenerator.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +244,12 @@
     </ClInclude>
     <ClInclude Include="AsymmetricCryptedFile.h">
       <Filter>Header Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AsymmetricCryptor.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimeGenerator.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

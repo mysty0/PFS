@@ -15,6 +15,7 @@
 #include "../PFS/User.cpp"
 #include "../PFS/UserTable.cpp"
 #include "../PFS/SymmetricCryptedFile.cpp"
+#include "../PFS/AsymmetricCryptor.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -77,10 +78,10 @@ namespace PFS_Tests {
 		TEST_METHOD(User_Table_Test) {
 			FileSystem system = FileSystem();
 			UserTable* table = system.get_user_table();
-			table->add_user(new User("test", "pub", "priv"));
-			table->add_user(new User("test1", "pub", "priv"));
+			table->add_user(new User("test", 3, 3, 3));
+			table->add_user(new User("test1", 3, 3, 3));
 			User* user = table->get_user("test");
-			Assert::IsTrue(user->get_name() == "test" && user->get_public_password() == "pub");
+			Assert::IsTrue(user->get_name() == "test");
 		}
 
 		TEST_METHOD(Crypt_File_Test) {

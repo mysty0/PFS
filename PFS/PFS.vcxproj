@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AsymmetricCryptedFile.cpp" />
+    <ClCompile Include="AsymmetricCryptor.cpp" />
     <ClCompile Include="BigInt.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CreateFileCommand.cpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="MakeDirectoryCommand.cpp" />
     <ClCompile Include="MapChunkStorage.cpp" />
     <ClCompile Include="Path.cpp" />
+    <ClCompile Include="PrimeGenerator.cpp" />
     <ClCompile Include="ReadFileCommand.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageChunk.cpp" />
@@ -48,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsymmetricCryptedFile.h" />
+    <ClInclude Include="AsymmetricCryptor.h" />
     <ClInclude Include="BigInt.h" />
     <ClInclude Include="ByteStorage.h" />
     <ClInclude Include="ChunkStorage.h" />
@@ -69,6 +72,7 @@
     <ClInclude Include="MakeDirectoryCommand.h" />
     <ClInclude Include="MapChunkStorage.h" />
     <ClInclude Include="Path.h" />
+    <ClInclude Include="PrimeGenerator.h" />
     <ClInclude Include="ReadFileCommand.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="StorageChunk.h" />

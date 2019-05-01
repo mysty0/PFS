@@ -9,7 +9,7 @@ class BigInt{
 
 	void normalize();
 public:
-	BigInt(long long n);
+	BigInt(unsigned long long n);
 	BigInt(std::string str);
 	BigInt();
 	~BigInt();
@@ -19,6 +19,7 @@ public:
 	BigInt operator^(const BigInt& lsh) const;
 	BigInt operator+(const BigInt& lsh) const;
 	BigInt operator-(const BigInt& lsh) const;
+	BigInt operator%(const BigInt& lsh) const;
 
 	BigInt & operator*=(const BigInt& lsh);
 	BigInt& operator/=(const BigInt& lsh);
@@ -35,6 +36,8 @@ public:
 	bool operator<=(const BigInt& lsh) const;
 	bool operator==(const BigInt& lsh) const;
 	bool operator!=(const BigInt& lsh) const;
+
+	bool is_even() const;
 	
 
 	char& operator[](int i);

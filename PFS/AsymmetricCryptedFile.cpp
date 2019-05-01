@@ -21,10 +21,10 @@ long long crypt_key(std::string pub_key, long long n) {
 
 void write_key(std::vector<char>& out, long long key) {
 	for (int i = 0; i < 8; ++i) out.push_back(key << (7 - i) * 8 >> (7 + i) * 8);
-}
+}	
 
 void AsymmetricCryptedFile::crypt(UserTable* users){
-	long long key = rand();
+	BigInt key = rand();
 	long long n = rand();
 
 	FileByteStream* stream = open_stream("keys");
@@ -35,7 +35,7 @@ void AsymmetricCryptedFile::crypt(UserTable* users){
 	int i = 0;
 	for (User* user : users->get_users()) {
 		int ukey = 0;
-		for (char c : user->get_public_password()) ukey += (int)c;
+		
 		//write_key(data, cryp_key(ukey, n));
 		//stream->write(i, )
 	}
