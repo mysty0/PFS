@@ -24,6 +24,7 @@ void BigInt::normalize() {
 		if (data[i] == 0) data.pop_back();
 		else break;
 	}
+	if ((data.size() == 1 && data[0] == 0) || data.empty()) negative = false;
 }
 
 BigInt BigInt::operator*(const BigInt& in) const {
@@ -74,12 +75,25 @@ BigInt BigInt::operator^(const BigInt& in) const{
 
 BigInt BigInt::operator+(const BigInt& in) const {
 	BigInt res;
-
+	
 	bool bigger = in.size() > size();
-	const BigInt& a = bigger ? in : *this;
-	const BigInt& b = bigger ? *this : in;
+
+	BigInt a = bigger ? in : (*this);
+	BigInt b = bigger ? (*this) : in;
+	
+	bool greater = false;
+	if (a.is_negative() != b.is_negative()) {
+		a.set_negative(false);
+		b.set_negative(false);
+		greater = a > b;
+		if (greater)
+			b.set_negative(true);
+		else
+			a.set_negative(true);
+	}
 
 	int rem = 0;
+	
 	int len = b.size();
 	for (int i = 0; i < len; ++i) {
 		int r = a.get(i) + b.get(i) + rem;
@@ -92,14 +106,28 @@ BigInt BigInt::operator+(const BigInt& in) const {
 			rem = r / 10;
 		}
 	}
-	if(a.size() > b.size()) for (int i = b.size(); i < a.size(); ++i) {
-		res.add_back(a.get(i) + rem%10);
-		rem /= 10;
-	}
+	
+	if(a.size() > b.size())
+		for (int i = b.size(); i < a.size(); ++i) {
+			int r = a.get(i, true) + rem % 10;
+			if (r < 0) {
+				res.add_back(10 + (r % 10));
+				rem = -1;
+			}
+			else {
+				res.add_back(r % 10);
+				rem = r / 10;
+			}
+		}
+	
 	if (rem) res.add_back(rem);
 
-	res.normalize();
+	if (a.is_negative() != b.is_negative())
+		if((greater && bigger && in.is_negative()) || (!greater && bigger && (*this).is_negative()) ||
+			(!greater && !bigger && in.is_negative()) || (greater && !bigger && (*this).is_negative()))res.set_negative(true);
+		//if ((!a.is_negative() && greater) || (!b.is_negative() && !greater)) res.set_negative(true);
 
+	res.normalize();
 	return res;
 }
 
@@ -113,7 +141,7 @@ BigInt BigInt::operator%(const BigInt& div) const{
 	BigInt quotient(0);
 	while (dividend >= div) {
 		dividend -= div;
-		++quotient;
+		quotient += 1;
 	}
 	return dividend;
 }
@@ -173,7 +201,7 @@ bool BigInt::operator>(const BigInt& in) const {
 	if (in.size() != size()) return size() > in.size();
 	else {
 		for (int i = size()-1; i >= 0; --i) {
-			if (data[i] != in.get(i)) return data[i] > in.get(i);
+			if (data[i] != in.get(i)) return get(i) > in.get(i);
 		}
 		return false;
 	}
@@ -188,7 +216,7 @@ bool BigInt::operator>=(const BigInt& in) const{
 	if (in.size() != size()) return size() > in.size();
 	else {
 		for (int i = size() - 1; i >= 0; --i) {
-			if (data[i] != in.get(i)) return data[i] > in.get(i);
+			if (data[i] != in.get(i)) return get(i) > in.get(i);
 		}
 		return true;
 	}
@@ -226,7 +254,8 @@ char& BigInt::operator[](int i){
 	return data[i];
 }
 
-char BigInt::get(int i) const{
+char BigInt::get(int i, bool abs) const{
+	if (abs) return data[i];
 	return (negative ? -1 : 1)*data[i];
 }
 
@@ -254,3 +283,8 @@ bool BigInt::is_negative() const{
 	return negative;
 }
 
+std::ostream& operator<<(std::ostream& out, const BigInt val){
+	if (val.is_negative()) out << "-";
+	for (int i = val.data.size() - 1; i >= 0; --i) out << (int)val.data[i];
+	return out;
+}

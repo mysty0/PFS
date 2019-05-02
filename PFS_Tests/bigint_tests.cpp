@@ -112,12 +112,21 @@ namespace PFS_Tests {
 		}
 
 		TEST_METHOD(Minus_Test) {
-			BigInt a(100);
+			BigInt a(101);
+			BigInt b(9);
+
+			BigInt r = a - b;
+
+			Assert::AreEqual(std::to_string((long long)101 - 9), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Minus_Zero_Test) {
+			BigInt a(10);
 			BigInt b(10);
 
 			BigInt r = a - b;
 
-			Assert::AreEqual(std::to_string((long long)100 - 10), std::to_string(r.value()));
+			Assert::AreEqual(std::to_string((long long)0), std::to_string(r.value()));
 		}
 
 		TEST_METHOD(Minus_Ordinary_Test) {
@@ -151,9 +160,9 @@ namespace PFS_Tests {
 			BigInt a(98734934334341);
 			BigInt b(54099734324342);
 
-			BigInt r = a - b;
+			a -= b;
 
-			Assert::AreEqual(std::to_string((long long)98734934334341 - 54099734324342), std::to_string(r.value()));
+			Assert::AreEqual(std::to_string((long long)98734934334341 - 54099734324342), std::to_string(a.value()));
 		}
 
 		TEST_METHOD(Divide_Test) {
@@ -181,6 +190,54 @@ namespace PFS_Tests {
 			BigInt r = a / b;
 
 			Assert::AreEqual(std::to_string((long long)98734934334341 / 54099734324342), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(More_Or_Equal_Test) {
+			BigInt a(9873492323233111);
+			BigInt b(54099734324342);
+
+			Assert::IsTrue(a >= b);
+		}
+
+		TEST_METHOD(More_Or_Equal_Same_Size_Test) {
+			BigInt a(9873492323233111);
+			BigInt b(9999999999999999);
+
+			Assert::IsTrue(!(a >= b));
+		}
+
+		TEST_METHOD(More_or_Equal_False_Test) {
+			BigInt a(902348702);
+			BigInt b(12323433330);
+
+			Assert::IsTrue(!(a >= b));
+		}
+
+		TEST_METHOD(Mod_Test) {
+			BigInt a(222);
+			BigInt b(4);
+
+			BigInt r;
+			r = a % b;
+
+			Assert::AreEqual(std::to_string((long long)222 % 4), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Mod_Zero_Test) {
+			BigInt a(22);
+			BigInt b(22);
+
+			BigInt r;
+			r = a % b;
+			Assert::IsTrue(r == 0);
+			Assert::AreEqual(std::to_string((long long)22 % 22), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Zero_Compare_Test) {
+			BigInt a(0);
+			BigInt b(0);
+			
+			Assert::IsTrue(a == b);
 		}
 
 		TEST_METHOD(Increment_test) {

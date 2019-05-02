@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <iostream>
 
 class BigInt{
 
@@ -41,7 +42,7 @@ public:
 	
 
 	char& operator[](int i);
-	char get(int i) const;
+	char get(int i, bool abs = false) const;
 
 	void add_back(char val);
 
@@ -49,6 +50,8 @@ public:
 	unsigned int size() const;
 	void set_negative(bool negative);
 	bool is_negative() const;
+
+	friend std::ostream& operator<<(std::ostream& out, const BigInt val);
 	
 };
 

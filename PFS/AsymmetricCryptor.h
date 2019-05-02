@@ -1,6 +1,7 @@
 #pragma once
 #include "BigInt.h"
 #include "PrimeGenerator.h"
+#include <iostream>
 
 
 class AsymmetricCryptor{

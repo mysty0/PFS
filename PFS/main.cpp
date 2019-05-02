@@ -15,6 +15,7 @@
 #include "ReadFileCommand.h"
 #include "PrimeGenerator.h"
 #include "AsymmetricCryptor.h"
+#include "BigInt.h"
 
 using namespace std;
 
@@ -33,6 +34,11 @@ int main() {
 	//File* file = new File(&storage, Path());
 	//delete file;
 	//PrimeGenerator::is_prime(11);
+	//cout << (BigInt(987349) - BigInt(54099734324342) ) << endl;
+	//return 0;
+	//BigInt(222) % BigInt(4);
+
+	//cout << (BigInt(995883480) % 2) << endl;
 
 	srand(time(NULL));
 
