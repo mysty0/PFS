@@ -50,8 +50,41 @@ BigInt BigInt::operator*(const BigInt& in) const {
 	return res;
 }
 
-BigInt BigInt::operator/(const BigInt& div) const{
+BigInt BigInt::operator/(const BigInt& divisor) const{
+	if (size() == divisor.size()) return (divisor > *this) ? 0 : 1;
+	if (*this == divisor) return 1;
+	if (divisor == 1) return BigInt(*this);
+	if (divisor > * this) return 0;
 
+	BigInt ans;
+
+	int idx = size()-1;
+	BigInt temp(data[idx]);
+	while (temp < divisor) {
+		temp = temp * 10 + (data[--idx]);
+		//std::cout << "tmp: " << temp << " ind: " << idx << std::endl;
+	}
+	while (idx >= 0)	{
+		//ans += (temp / divisor);
+		
+		BigInt dividend(temp);
+		BigInt quotient(0);
+		while (dividend >= divisor) {
+			dividend -= divisor;
+			++quotient;
+		}
+		ans.add_back(quotient);
+		//std::cout << ans << std::endl;
+		if (idx > 0) temp = (temp % divisor) * 10 + data[--idx];
+		else break;
+	}
+
+	if (ans.size() == 0)
+		return 0;
+
+	std::reverse(ans.data.begin(), ans.data.end());
+	return ans;
+	/*
 	BigInt dividend(*this);
 	BigInt quotient(0);
 	while (dividend >= div){
@@ -59,6 +92,7 @@ BigInt BigInt::operator/(const BigInt& div) const{
 		++quotient;
 	}
 	return quotient;
+	*/
 }
 
 BigInt BigInt::operator^(const BigInt& in) const{
@@ -135,15 +169,37 @@ BigInt BigInt::operator-(const BigInt& in) const {
 	return (*this) + (-in);
 }
 
-BigInt BigInt::operator%(const BigInt& div) const{
+BigInt BigInt::operator%(const BigInt& div) const {
 	if ((*this) < div) return BigInt(*this);
+	if (div.size() == 1) {
+		if (div.get(0) == 1) return BigInt(0);
+		if (div.get(0) == 2) return BigInt(data[0] % 2);
+		if (div.size() == 1) return data[0] % div.get(0);
+	}
+	if((*this) < div) return BigInt(*this);
+	
+
+	BigInt res;
+
+	for (int i = size()-1; i >= 0; --i) {
+		//res = (res * 10 + data[i]) % div;
+		BigInt dividend((res * 10 + data[i]));
+		BigInt quotient(0);
+		while (dividend >= div) {
+			dividend -= div;
+			quotient += 1;
+		}
+		res = dividend;
+	}
+	/*
 	BigInt dividend(*this);
 	BigInt quotient(0);
 	while (dividend >= div) {
 		dividend -= div;
 		quotient += 1;
 	}
-	return dividend;
+	*/
+	return res;
 }
 
 BigInt& BigInt::operator*=(const BigInt& in){
@@ -261,6 +317,11 @@ char BigInt::get(int i, bool abs) const{
 
 void BigInt::add_back(char val){
 	data.push_back(val);
+}
+
+void BigInt::add_back(const BigInt& val){
+	if (val == 0) add_back(0);
+	for (const char el : val.data) add_back(el);
 }
 
 long long BigInt::value() const {

@@ -34,7 +34,7 @@ int main() {
 	//File* file = new File(&storage, Path());
 	//delete file;
 	//PrimeGenerator::is_prime(11);
-	//cout << (BigInt(987349) - BigInt(54099734324342) ) << endl;
+	//cout << (BigInt(100) / BigInt(10) ) << endl;
 	//return 0;
 	//BigInt(222) % BigInt(4);
 

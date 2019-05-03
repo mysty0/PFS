@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 class BigInt{
 
@@ -45,6 +46,8 @@ public:
 	char get(int i, bool abs = false) const;
 
 	void add_back(char val);
+	void add_back(const BigInt& val);
+	void insert(const BigInt& val);
 
 	long long value() const;
 	unsigned int size() const;

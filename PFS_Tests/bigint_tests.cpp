@@ -174,6 +174,15 @@ namespace PFS_Tests {
 			Assert::AreEqual(std::to_string((long long)100 / 10), std::to_string(r.value()));
 		}
 
+		TEST_METHOD(Divide_Big_Test) {
+			BigInt a(9023749023);
+			BigInt b(23456);
+
+			BigInt r = a / b;
+
+			Assert::AreEqual(std::to_string((long long)9023749023 / 23456), std::to_string(r.value()));
+		}
+
 		TEST_METHOD(Divide_Diff_Size_Test) {
 			BigInt a(987349);
 			BigInt b(54099734324342);
@@ -221,6 +230,16 @@ namespace PFS_Tests {
 			r = a % b;
 
 			Assert::AreEqual(std::to_string((long long)222 % 4), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Mod_Big_Test) {
+			BigInt a(92374900238);
+			BigInt b(23452);
+
+			BigInt r;
+			r = a % b;
+
+			Assert::AreEqual(std::to_string((long long)92374900238 % 23452), std::to_string(r.value()));
 		}
 
 		TEST_METHOD(Mod_Zero_Test) {
