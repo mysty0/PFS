@@ -17,5 +17,6 @@ public:
 	static int non_prime_cache_size();
 	static void wipe_cache();
 
+	static unsigned long long pow_mod(unsigned long long a, unsigned long long x, unsigned long long n);
 };
 

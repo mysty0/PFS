@@ -51,22 +51,21 @@ BigInt BigInt::operator*(const BigInt& in) const {
 }
 
 BigInt BigInt::operator/(const BigInt& divisor) const{
-	if (size() == divisor.size()) return (divisor > *this) ? 0 : 1;
-	if (*this == divisor) return 1;
+	//if (size() == divisor.size()) return (divisor > *this) ? 0 : 1;
 	if (divisor == 1) return BigInt(*this);
-	if (divisor > * this) return 0;
+	if (divisor > *this) return 0;
 
 	BigInt ans;
+	
+	BigInt temp;
+	for (int i = size() - divisor.size(); i < size(); ++i)
+		temp[i - (size() - divisor.size())] = data[i];
 
-	int idx = size()-1;
-	BigInt temp(data[idx]);
-	while (temp < divisor) {
-		temp = temp * 10 + (data[--idx]);
-		//std::cout << "tmp: " << temp << " ind: " << idx << std::endl;
-	}
-	while (idx >= 0)	{
-		//ans += (temp / divisor);
-		
+	int idx = size() - divisor.size();
+
+	if (temp < divisor) temp.data.insert(temp.data.begin(), data[--idx]);
+	
+	while (idx >= 0){
 		BigInt dividend(temp);
 		BigInt quotient(0);
 		while (dividend >= divisor) {
@@ -74,8 +73,7 @@ BigInt BigInt::operator/(const BigInt& divisor) const{
 			++quotient;
 		}
 		ans.add_back(quotient);
-		//std::cout << ans << std::endl;
-		if (idx > 0) temp = (temp % divisor) * 10 + data[--idx];
+		if (idx > 0) temp = dividend * 10 + data[--idx];
 		else break;
 	}
 
@@ -84,27 +82,28 @@ BigInt BigInt::operator/(const BigInt& divisor) const{
 
 	std::reverse(ans.data.begin(), ans.data.end());
 	return ans;
-	/*
-	BigInt dividend(*this);
-	BigInt quotient(0);
-	while (dividend >= div){
-		dividend -= div;
-		++quotient;
-	}
-	return quotient;
-	*/
 }
 
-BigInt BigInt::operator^(const BigInt& in) const{
-	if (in == BigInt(0)) return BigInt(1);
-	if (in == BigInt(1)) return BigInt(*this);
-	BigInt res(*this);
+BigInt BigInt::operator^(const BigInt& pow) const{
+	if (pow == BigInt(0)) return BigInt(1);
+	if (pow == BigInt(1)) return BigInt(*this);
+	BigInt result(1);
+	BigInt n(pow);
+	BigInt x(*this);
+	while (n != 0) {
+		if (!n.is_even())
+			result = (x * result);
+		n = n / 2;
+		x = (x * x);
+	}
+	return result;
+	/*BigInt res(*this);
 	int pw = in.value();
 	for (int i = 1; i < pw; ++i) {
 		res *= (*this);
 	}
-
-	return res;
+	*/
+	return result;
 }
 
 BigInt BigInt::operator+(const BigInt& in) const {
@@ -174,10 +173,9 @@ BigInt BigInt::operator%(const BigInt& div) const {
 	if (div.size() == 1) {
 		if (div.get(0) == 1) return BigInt(0);
 		if (div.get(0) == 2) return BigInt(data[0] % 2);
-		if (div.size() == 1) return data[0] % div.get(0);
+		//if (div.size() == 1) return data[0] % div.get(0);
 	}
-	if((*this) < div) return BigInt(*this);
-	
+	//if((*this) < div) return BigInt(*this);
 
 	BigInt res;
 
@@ -297,9 +295,22 @@ bool BigInt::operator!=(const BigInt& lsh) const{
 	return !((*this) == lsh);
 }
 
+BigInt BigInt::pow_mod(const BigInt& pow, const BigInt& mod) const{
+	BigInt result(1);
+	BigInt n(pow);
+	BigInt x(*this);
+	while (n != 0) {
+		if (!n.is_even())
+			result = (x * result) % mod;
+		n = n / 2;
+		x = (x * x) % mod;
+	}
+	return result;
+}
+
 bool BigInt::is_even() const{
 	if (data.size() == 0) return true;
-	return (data.back() & 1) == 0;
+	return (data.front() & 1) == 0;
 }
 
 char& BigInt::operator[](int i){

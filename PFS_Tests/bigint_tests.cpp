@@ -21,6 +21,26 @@ namespace PFS_Tests {
 			Assert::AreEqual(std::to_string((long long)312143423 * 54099734), std::to_string(r.value()));
 		}
 
+		TEST_METHOD(Pow_Mod_Test) {
+			BigInt a(12);
+			BigInt b(5);
+			BigInt n(21);
+
+			BigInt r = a.pow_mod(b, n);
+
+			Assert::AreEqual(std::to_string((long long)std::pow(12, 5) % 21), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Pow2_Mod_Test) {
+			BigInt a(3212);
+			BigInt b(4);
+			BigInt n(3345);
+
+			BigInt r = a.pow_mod(b, n);
+
+			Assert::AreEqual(std::to_string((long long)std::pow(3212, 4) % 3345), std::to_string(r.value()));
+		}
+
 		TEST_METHOD(Multiply_Ordinary_Test) {
 			BigInt a(312143423);
 			long long b(54099734);
@@ -120,6 +140,14 @@ namespace PFS_Tests {
 			Assert::AreEqual(std::to_string((long long)101 - 9), std::to_string(r.value()));
 		}
 
+		TEST_METHOD(Minus5_Test) {
+			BigInt a(25);
+			BigInt b(5);
+
+			a -= b;
+
+			Assert::AreEqual(std::to_string((long long)25 - 5), std::to_string(a.value()));
+		}
 		TEST_METHOD(Minus_Zero_Test) {
 			BigInt a(10);
 			BigInt b(10);
@@ -192,6 +220,24 @@ namespace PFS_Tests {
 			Assert::AreEqual(std::to_string((long long)987349 / 54099734324342), std::to_string(r.value()));
 		}
 
+		TEST_METHOD(Divide5_Size_Test) {
+			BigInt a(25);
+			BigInt b(5);
+
+			BigInt r = a / b;
+
+			Assert::AreEqual(std::to_string((long long)25 / 5), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Divide52_Size_Test) {
+			BigInt a(5);
+			BigInt b(2);
+
+			BigInt r = a / b;
+
+			Assert::AreEqual(std::to_string((long long)5 / 2), std::to_string(r.value()));
+		}
+
 		TEST_METHOD(Divide_Same_Size_Test) {
 			BigInt a(98734934334341);
 			BigInt b(54099734324342);
@@ -232,6 +278,16 @@ namespace PFS_Tests {
 			Assert::AreEqual(std::to_string((long long)222 % 4), std::to_string(r.value()));
 		}
 
+		TEST_METHOD(Mod2_Test) {
+			BigInt a(12);
+			BigInt b(3);
+
+			BigInt r;
+			r = a % b;
+
+			Assert::AreEqual(std::to_string((long long)12 % 3), std::to_string(r.value()));
+		}
+
 		TEST_METHOD(Mod_Big_Test) {
 			BigInt a(92374900238);
 			BigInt b(23452);
@@ -259,6 +315,17 @@ namespace PFS_Tests {
 			Assert::IsTrue(a == b);
 		}
 
+		TEST_METHOD(Is_Even_Test) {
+			BigInt a(100);
+
+			Assert::IsTrue(a.is_even());
+		}
+
+		TEST_METHOD(Is_Even_False_Test) {
+			BigInt a(201);
+
+			Assert::IsTrue(!a.is_even());
+		}
 		TEST_METHOD(Increment_test) {
 			BigInt a(0);
 
@@ -274,6 +341,15 @@ namespace PFS_Tests {
 			BigInt r = a ^ b;
 
 			Assert::AreEqual(std::to_string((long long)std::pow((long long)666, 66)), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Pow2_test) {
+			BigInt a(12);
+			BigInt b(5);
+
+			BigInt r = a ^ b;
+
+			Assert::AreEqual(std::to_string((long long)std::pow((long long)12, 5)), std::to_string(r.value()));
 		}
 	};
 }

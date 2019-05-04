@@ -45,7 +45,11 @@ int main() {
 	BigInt pub, priv, n;
 	AsymmetricCryptor::generate_keys(pub, priv, n);
 
-	cout << pub.value() << " " << priv.value() << " " << n.value();
+	cout << pub.value() << " " << priv.value() << " " << n.value() << std::endl;
+
+	BigInt crypted = AsymmetricCryptor::crypt_key(123, pub, n);
+	cout << "Crypted: " << crypted << std::endl;
+	cout << "Encrypted: " << AsymmetricCryptor::crypt_key(crypted, priv, n) << std::endl;
 
 	return 0;
 

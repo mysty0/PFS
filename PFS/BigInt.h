@@ -39,8 +39,9 @@ public:
 	bool operator==(const BigInt& lsh) const;
 	bool operator!=(const BigInt& lsh) const;
 
+	BigInt pow_mod(const BigInt& pow, const BigInt& mod) const;
+
 	bool is_even() const;
-	
 
 	char& operator[](int i);
 	char get(int i, bool abs = false) const;

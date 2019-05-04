@@ -3,11 +3,8 @@
 static std::set<unsigned long long> prime_cache;
 static std::set<unsigned long long> non_prime_cache;
 
-static unsigned long long pow_mod(unsigned long long a, unsigned long long x, unsigned long long n)
-{
-
+unsigned long long PrimeGenerator::pow_mod(unsigned long long a, unsigned long long x, unsigned long long n){
 	unsigned long long r = 1;
-
 	while (x) {
 		if ((x & 1) == 1)
 			r = a * r % n;
