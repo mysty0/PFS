@@ -25,6 +25,7 @@ void BigInt::normalize() {
 		else break;
 	}
 	if ((data.size() == 1 && data[0] == 0) || data.empty()) negative = false;
+	for (int i = 0; i < size(); ++i) assert(data[i] < 10);
 }
 
 BigInt BigInt::operator*(const BigInt& in) const {
@@ -131,11 +132,13 @@ BigInt BigInt::operator+(const BigInt& in) const {
 	for (int i = 0; i < len; ++i) {
 		int r = a.get(i) + b.get(i) + rem;
 		if (r < 0) {
-			res.add_back(10 + (r % 10));
+			if (r == -10) res.add_back(0);
+			else res.add_back(10 + (r % 10));
 			rem = -1;
 		}
 		else {
-			res.add_back(r % 10);
+			if (r == 10) res.add_back(0);
+			else res.add_back(r % 10);
 			rem = r / 10;
 		}
 	}
@@ -169,23 +172,24 @@ BigInt BigInt::operator-(const BigInt& in) const {
 }
 
 BigInt BigInt::operator%(const BigInt& div) const {
+	if (data.empty()) return BigInt(0);
 	if ((*this) < div) return BigInt(*this);
 	if (div.size() == 1) {
-		if (div.get(0) == 1) return BigInt(0);
+		if (div.get(0) == 1 || data[0] == 0) return BigInt(0);
 		if (div.get(0) == 2) return BigInt(data[0] % 2);
 		//if (div.size() == 1) return data[0] % div.get(0);
 	}
 	//if((*this) < div) return BigInt(*this);
-
+				
 	BigInt res;
 
 	for (int i = size()-1; i >= 0; --i) {
 		//res = (res * 10 + data[i]) % div;
-		BigInt dividend((res * 10 + data[i]));
-		BigInt quotient(0);
+		BigInt dividend((res * BigInt(10) + data[i]));
+		//BigInt quotient(0);
 		while (dividend >= div) {
 			dividend -= div;
-			quotient += 1;
+			//quotient += 1;
 		}
 		res = dividend;
 	}
@@ -335,6 +339,14 @@ void BigInt::add_back(const BigInt& val){
 	for (const char el : val.data) add_back(el);
 }
 
+std::string BigInt::to_string() const{
+	std::string res;
+	if (is_negative()) res.push_back('-');
+	if (data.empty()) res.push_back('0');
+	for (int i = size() - 1; i >= 0; --i) res.push_back('0'+data[i]);
+	return res;
+}
+
 long long BigInt::value() const {
 	long long res = 0;
 	int i = 0;
@@ -357,6 +369,7 @@ bool BigInt::is_negative() const{
 
 std::ostream& operator<<(std::ostream& out, const BigInt val){
 	if (val.is_negative()) out << "-";
+	if (val.data.empty()) out << 0;
 	for (int i = val.data.size() - 1; i >= 0; --i) out << (int)val.data[i];
 	return out;
 }

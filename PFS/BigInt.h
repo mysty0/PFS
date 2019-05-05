@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <cassert>
 
 class BigInt{
 
@@ -50,6 +51,7 @@ public:
 	void add_back(const BigInt& val);
 	void insert(const BigInt& val);
 
+	std::string to_string() const;
 	long long value() const;
 	unsigned int size() const;
 	void set_negative(bool negative);

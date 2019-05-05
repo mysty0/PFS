@@ -41,6 +41,58 @@ namespace PFS_Tests {
 			Assert::AreEqual(std::to_string((long long)std::pow(3212, 4) % 3345), std::to_string(r.value()));
 		}
 
+		TEST_METHOD(Pow2_Mod1_Test) {
+			BigInt a(2349414671);
+			BigInt b(11);
+			BigInt n(3692059069);
+
+			BigInt r = a.pow_mod(b, n);
+
+			Assert::AreEqual(std::string("922185654"), r.to_string());
+		}
+		TEST_METHOD(Pow_Mod_Div_Test) {
+			BigInt a(234941467188);
+			BigInt b(234941467188);
+			BigInt n(3692059069);
+			a *= b;
+			Assert::AreEqual(std::string("2151108602"), ((a) % n).to_string());
+		}
+
+		TEST_METHOD(Pow_Mod1_Div_Test) {
+			BigInt a(234941467188);
+			BigInt b(234941467188);
+			BigInt n(1111119111);
+			a *= b;
+			Assert::AreEqual(std::string("424731321"), ((a) % n).to_string());
+		}
+
+		TEST_METHOD(Pow_Big1_Test) {
+			BigInt a(2349414671);
+			BigInt b(11);
+
+			BigInt r = a ^ b;
+
+			Assert::AreEqual(std::string("12038058245592876784305067636706646413204469180636629881331324836746011428227586528234810006441423645871"), r.to_string());
+		}
+
+		TEST_METHOD(Multiplay_Big1_Test) {
+			BigInt a(2349414671);
+			BigInt b(2349414671);
+
+			BigInt r = a * b;
+
+			Assert::AreEqual(std::string("5519749296310038241"), r.to_string());
+		}
+
+		TEST_METHOD(Multiplay_Big2_Test) {
+			BigInt a(999);
+			BigInt b(999);
+
+			BigInt r = a * b;
+
+			Assert::AreEqual(std::to_string((long long)999*999), std::to_string(r.value()));
+		}
+
 		TEST_METHOD(Multiply_Ordinary_Test) {
 			BigInt a(312143423);
 			long long b(54099734);
@@ -109,6 +161,14 @@ namespace PFS_Tests {
 			BigInt b(93437848923847);
 
 			Assert::IsTrue((a > b) == (345242342 > 93437848923847));
+		}
+
+
+		TEST_METHOD(Is_Greater_Big_Test) {
+			BigInt a(345242342);
+			BigInt b(93437848923847);
+
+			Assert::IsTrue((a ^ 12) >= (a^11));
 		}
 
 		TEST_METHOD(Is_Greater_Ordinary_Test) {
@@ -287,6 +347,33 @@ namespace PFS_Tests {
 
 			Assert::AreEqual(std::to_string((long long)12 % 3), std::to_string(r.value()));
 		}
+		TEST_METHOD(Mod10_Test) {
+			BigInt a(10);
+			BigInt b(11);
+
+			BigInt r;
+			r = a % b;
+
+			Assert::AreEqual(std::to_string((long long)10%11), std::to_string(r.value()));
+		}
+		TEST_METHOD(Mod_Loop_Test) {
+			BigInt a(11);
+			
+			for (int i = 1000; i < 3000; ++i)
+				Assert::AreEqual(std::to_string(i % 11), (BigInt(i) % a).to_string());
+
+			//Assert::AreEqual(std::to_string((long long)12 % 3), std::to_string(r.value()));
+		}
+
+		TEST_METHOD(Mod3_Test) {
+			BigInt a(71);
+			BigInt b(11);
+
+			BigInt r;
+			r = a % b;
+
+			Assert::AreEqual(std::to_string((long long)71 % 11), std::to_string(r.value()));
+		}
 
 		TEST_METHOD(Mod_Big_Test) {
 			BigInt a(92374900238);
@@ -336,11 +423,11 @@ namespace PFS_Tests {
 
 		TEST_METHOD(Pow_test) {
 			BigInt a(666);
-			BigInt b(66);
+			BigInt b(6);
 
 			BigInt r = a ^ b;
 
-			Assert::AreEqual(std::to_string((long long)std::pow((long long)666, 66)), std::to_string(r.value()));
+			Assert::AreEqual(std::to_string((long long)std::pow((long long)666, 6)), r.to_string());
 		}
 
 		TEST_METHOD(Pow2_test) {

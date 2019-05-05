@@ -153,11 +153,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="asymmetric_cryptor_tests.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="asymmetric_cryptor_tests.cpp" />
     <ClCompile Include="bigint_tests.cpp" />
     <ClCompile Include="file_descriptor_test.cpp" />
     <ClCompile Include="file_system_tests.cpp" />

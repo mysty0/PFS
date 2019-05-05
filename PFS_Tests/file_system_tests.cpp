@@ -15,7 +15,6 @@
 #include "../PFS/User.cpp"
 #include "../PFS/UserTable.cpp"
 #include "../PFS/SymmetricCryptedFile.cpp"
-#include "../PFS/AsymmetricCryptor.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
