@@ -24,6 +24,7 @@
     <ClCompile Include="BigInt.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CreateFileCommand.cpp" />
+    <ClCompile Include="CryptFileCommand.cpp" />
     <ClCompile Include="Directory.cpp" />
     <ClCompile Include="DirectoryPermissions.cpp" />
     <ClCompile Include="DirectoryStream.cpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CreateFileCommand.h" />
+    <ClInclude Include="CryptFileCommand.h" />
     <ClInclude Include="Directory.h" />
     <ClInclude Include="DirectoryPermissions.h" />
     <ClInclude Include="DirectoryStream.h" />

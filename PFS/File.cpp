@@ -2,14 +2,14 @@
 
 
 
-File::File(Storage * storage, Path path): path(path), stream_table(new StreamTable(storage)), descripor(FileDescriptor(storage)){
+File::File(Storage * storage, Path path): path(path), stream_table(StreamTable(storage)), descripor(FileDescriptor(storage)){
 	create();
 }
 
 
 File::~File(){
-	delete this->permissions;
-	delete stream_table;
+	//delete this->permissions;
+	//delete stream_table;
 }
 
 bool File::create(){
@@ -25,8 +25,8 @@ FileDataStream *File::open(char flags){
 }
 
 FileByteStream* File::open_stream(std::string name){
-	FileStream* stream = stream_table->get_stream(name);
-	if (!stream) stream = stream_table->create_stream(name);
+	FileStream* stream = stream_table.get_stream(name);
+	if (!stream) stream = stream_table.create_stream(name);
 	return stream->open();
 }
 
@@ -59,12 +59,12 @@ void File::set_modified_data(std::time_t modified_date){
 }
 
 void File::set_permissions(FilePermissions permissions){
-	delete this->permissions;
-	this->permissions = new FilePermissions(permissions);
+	//delete permissions;
+	permissions = new FilePermissions(permissions);
 }
 
 FilePermissions File::get_permissions() const{
-	return *permissions;
+	return permissions;
 }
 
 FileId File::get_id() const {

@@ -148,7 +148,10 @@
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Hasher.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CryptFileCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -255,7 +258,10 @@
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Hasher.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CryptFileCommand.h">
+      <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,6 +6,10 @@ SymmetricCryptedFile::SymmetricCryptedFile(Storage* storage, Path path): File::F
 {
 }
 
+SymmetricCryptedFile::SymmetricCryptedFile(File file): File::File(file)
+{
+}
+
 
 SymmetricCryptedFile::~SymmetricCryptedFile()
 {

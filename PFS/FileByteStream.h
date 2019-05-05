@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 #include "FileDataStream.h"
 #include "FileTypedef.h"
 #include "FileDescriptor.h"
@@ -13,6 +15,8 @@ public:
 
 	bool write(FileBytePointer pointer, const char byte);
 	bool write(FileBytePointer pointer, const char* bytes, StorageFileSize size);
+	bool write_int(FileBytePointer pointer, int i);
+	FileBytePointer write_string(FileBytePointer pointer, std::string str);
 
 	char read(FileBytePointer pointer);
 	char* read(FileBytePointer pointer, StorageFileSize size);

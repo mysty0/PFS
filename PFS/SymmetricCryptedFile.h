@@ -11,6 +11,7 @@ class SymmetricCryptedFile :
 
 public:
 	SymmetricCryptedFile(Storage* storage, Path path);
+	SymmetricCryptedFile(File file);
 	~SymmetricCryptedFile();
 
 	void crypt(std::string password);

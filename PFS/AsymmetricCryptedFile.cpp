@@ -2,7 +2,11 @@
 
 
 
-AsymmetricCryptedFile::AsymmetricCryptedFile(Storage* storage, Path path) : File::File(storage, path)
+AsymmetricCryptedFile::AsymmetricCryptedFile(Storage* storage, Path path) : SymmetricCryptedFile::SymmetricCryptedFile(storage, path)
+{
+}
+
+AsymmetricCryptedFile::AsymmetricCryptedFile(File file): SymmetricCryptedFile::SymmetricCryptedFile(file)
 {
 }
 
@@ -24,20 +28,19 @@ void write_key(std::vector<char>& out, long long key) {
 }	
 
 void AsymmetricCryptedFile::crypt(UserTable* users){
-	BigInt key = rand();
-	long long n = rand();
-
 	FileByteStream* stream = open_stream("keys");
 
-	std::vector<char> data;
-	write_key(data, n);
+	BigInt key(Hasher::bigint_hash(rand(), 32));
+
+	std::string data;
+	//write_key(data, n);
 
 	int i = 0;
 	for (User* user : users->get_users()) {
-		int ukey = 0;
-		
-		//write_key(data, cryp_key(ukey, n));
-		//stream->write(i, )
+		i = stream->write_string(i, AsymmetricCryptor::crypt_key(user->get_public_key(), user->get_private_key(), key).to_string());
 	}
 	
+	delete stream;
+	
+	SymmetricCryptedFile::crypt(key.to_string());
 }

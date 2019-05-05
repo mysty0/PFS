@@ -13,6 +13,7 @@
 #include "MakeDirectoryCommand.h"
 #include "CreateFileCommand.h"
 #include "ReadFileCommand.h"
+#include "CryptFileCommand.h"
 #include "PrimeGenerator.h"
 #include "AsymmetricCryptor.h"
 #include "BigInt.h"
@@ -52,9 +53,9 @@ int main() {
 	//cout << "Crypted: " << crypted << std::endl;
 	//cout << "Encrypted: " << AsymmetricCryptor::crypt_key(crypted, priv, n) << std::endl;
 
-	cout << Hasher::bigint_hash(123, 20) << std::endl;
+	//cout << Hasher::bigint_hash(123, 20) << std::endl;
 
-	return 0;
+	//return 0;
 
 	FileSystem fs = FileSystem();
 	
@@ -64,6 +65,7 @@ int main() {
 	cm.register_handler("mkdir", new MakeDirectoryCommand(&fs));
 	cm.register_handler("write", new CreateFileCommand(&fs));
 	cm.register_handler("read", new ReadFileCommand(&fs));
+	cm.register_handler("crypt", new CryptFileCommand(&fs));
 	
 	while (true) {
 		string command;

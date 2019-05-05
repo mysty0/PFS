@@ -19,6 +19,20 @@ bool FileByteStream::write(FileBytePointer pointer, const char * bytes, StorageF
 	return descriptor->write(pointer, bytes, size);
 }
 
+
+
+bool FileByteStream::write_int(FileBytePointer pointer, int val){
+	const int size = 4;
+	for (int i = 0; i < size; ++i) if (!write(pointer+i, val << (size - 1 - i) * size >> (size - 1 + i) * size)) return false;
+	return true;
+}
+
+FileBytePointer FileByteStream::write_string(FileBytePointer pointer, std::string str){
+	write_int(pointer, str.size());
+	write(pointer + 4, str.c_str(), str.size());
+	return pointer + 4 + str.size();
+}
+
 char FileByteStream::read(FileBytePointer pointer){
 	return descriptor->read(pointer);
 }

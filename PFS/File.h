@@ -20,11 +20,11 @@ class File{
 	std::time_t created_date;
 	std::time_t modified_date;
 
-	FilePermissions *permissions = nullptr;
+	FilePermissions permissions;
 
 	FileDescriptor descripor;
 
-	StreamTable* stream_table;
+	StreamTable stream_table;
 
 public:
 	File(Storage * storage, Path path);
