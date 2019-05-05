@@ -15,11 +15,11 @@ namespace PFS_Tests {
 	public:
 		TEST_METHOD(Encrypt_Test) {
 			BigInt pub, priv, n;
-			//AsymmetricCryptor::generate_keys(pub, priv, n);
-			//BigInt key(1234);
-			//BigInt crypt(AsymmetricCryptor::crypt_key(key, pub, n));
-			//BigInt encr(AsymmetricCryptor::crypt_key(crypt, priv, n));
-			//Assert::AreEqual(std::to_string(1234), encr.to_string());
+			AsymmetricCryptor::generate_keys(pub, priv, n);
+			BigInt key(1234);
+			BigInt crypt(AsymmetricCryptor::crypt_key(key, pub, n));
+			BigInt encr(AsymmetricCryptor::crypt_key(crypt, priv, n));
+			Assert::AreEqual(std::to_string(1234), encr.to_string());
 		}  
 	};
 }

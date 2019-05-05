@@ -16,6 +16,7 @@
 #include "PrimeGenerator.h"
 #include "AsymmetricCryptor.h"
 #include "BigInt.h"
+#include "Hasher.h"
 
 using namespace std;
 
@@ -42,14 +43,16 @@ int main() {
 
 	srand(time(NULL));
 
-	BigInt pub, priv, n;
-	AsymmetricCryptor::generate_keys(pub, priv, n);
+	//BigInt pub, priv, n;
+	//AsymmetricCryptor::generate_keys(pub, priv, n);
 
-	cout << pub.value() << " " << priv.value() << " " << n.value() << std::endl;
+	//cout << pub.value() << " " << priv.value() << " " << n.value() << std::endl;
 
-	BigInt crypted = AsymmetricCryptor::crypt_key(123, pub, n);
-	cout << "Crypted: " << crypted << std::endl;
-	cout << "Encrypted: " << AsymmetricCryptor::crypt_key(crypted, priv, n) << std::endl;
+	//BigInt crypted = AsymmetricCryptor::crypt_key(123, pub, n);
+	//cout << "Crypted: " << crypted << std::endl;
+	//cout << "Encrypted: " << AsymmetricCryptor::crypt_key(crypted, priv, n) << std::endl;
+
+	cout << Hasher::bigint_hash(123, 20) << std::endl;
 
 	return 0;
 

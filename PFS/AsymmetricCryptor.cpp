@@ -14,13 +14,13 @@ BigInt gcd(BigInt a, BigInt b){
 }
 
 void AsymmetricCryptor::generate_keys(BigInt& public_key, BigInt& private_key, BigInt& n){
-	BigInt p(64399);//PrimeGenerator::generate_prime(10000));
-	BigInt q(57331);//PrimeGenerator::generate_prime(10000));
-	std::cout << "P: " << p << " q: " << q << std::endl;
+	BigInt p(PrimeGenerator::generate_prime(10000));
+	BigInt q(PrimeGenerator::generate_prime(10000));
+	//std::cout << "P: " << p << " q: " << q << std::endl;
 
 	n = p * q;
 
-	std::cout << "n: " << n << std::endl;
+	//std::cout << "n: " << n << std::endl;
 
 	public_key = 2;
 	BigInt phi = (p - 1) * (q - 1);
@@ -32,8 +32,8 @@ void AsymmetricCryptor::generate_keys(BigInt& public_key, BigInt& private_key, B
 		//std::cout << "public_key: " << public_key << std::endl;
 	}
 	//public_key = 23;
-	std::cout << "phi: " << phi << std::endl;
-	std::cout << "public key: " << public_key << std::endl;
+	//std::cout << "phi: " << phi << std::endl;
+	//std::cout << "public key: " << public_key << std::endl;
 
 	//BigInt k(2);
 	//private_key = ((k * phi) + 1) / public_key;
@@ -47,7 +47,7 @@ void AsymmetricCryptor::generate_keys(BigInt& public_key, BigInt& private_key, B
 			break;
 		}
 	}
-	std::cout << "private key: " << private_key << "test " << private_key * public_key % phi << "test1 " << private_key.pow_mod(public_key, phi) << std::endl;
+	//std::cout << "private key: " << private_key << "test " << private_key * public_key % phi << "test1 " << private_key.pow_mod(public_key, phi) << std::endl;
 }
 
 BigInt AsymmetricCryptor::crypt_key(const BigInt& key, const BigInt& ukey, const BigInt& n){
