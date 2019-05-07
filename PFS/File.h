@@ -35,6 +35,8 @@ public:
 
 	virtual FileDataStream *open(char flags);
 	FileByteStream* open_stream(std::string name);
+	std::vector<std::string> get_streams();
+	void delete_stream(std::string name, bool full = true);
 
 	virtual bool is_directory() const;
 

@@ -6,8 +6,8 @@ SymmetricCryptedFile::SymmetricCryptedFile(Storage* storage, Path path): File::F
 {
 }
 
-SymmetricCryptedFile::SymmetricCryptedFile(File file): File::File(file)
-{
+SymmetricCryptedFile::SymmetricCryptedFile(File file): File::File(file){
+	for (std::string name : file.get_streams()) file.delete_stream(name, false);
 }
 
 

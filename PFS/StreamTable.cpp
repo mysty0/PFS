@@ -12,6 +12,12 @@ StreamTable::~StreamTable(){
 }
 
 
+std::vector<std::string> StreamTable::get_streams(){
+	std::vector<std::string> res;
+	for (const auto stream : streams) res.push_back(stream.first);
+	return res;
+}
+
 FileStream* StreamTable::get_stream(std::string name){
 	std::map<std::string, FileStream*>::iterator stream = streams.find(name);
 	if (stream == streams.end()) return nullptr;
@@ -24,6 +30,11 @@ FileStream* StreamTable::create_stream(std::string name){
 	return stream;
 }
 
-void StreamTable::delete_stream(std::string name){
+void StreamTable::delete_stream(std::string name, bool full){
+	if (full) {
+		auto stream = streams.find(name);
+		stream->second->erase();
+		delete stream->second;
+	}
 	streams.erase(name);
 }

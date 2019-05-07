@@ -50,9 +50,9 @@ Storage::~Storage() {
 }
 
 StorageChunk * Storage::allocate(StorageFileSize size) {
-	if (size > avalible_size) return nullptr;
+	if (size > avalible_size) throw StorageException("Not enought size");
 	StorageChunk* first = allocate_chunk(size);
-	if (!first) return nullptr;
+	if (!first) throw StorageException("Cannot allocate first chunk");
 
 	StorageChunk *cur = first;
 	unsigned int chunk_count = size / chunk_size + (size % chunk_size == 0? 0 : 1);
@@ -60,7 +60,7 @@ StorageChunk * Storage::allocate(StorageFileSize size) {
 		cur->next = allocate_chunk(size - i*chunk_size);
 		if (!cur->next) {
 			delete_chain(first);
-			return nullptr;
+			throw StorageException("Cannot allocate next chunk");
 		}
 		cur = cur->next;
 	}

@@ -5,6 +5,7 @@
 #include "MapChunkStorage.h"
 #include "ByteStorage.h"
 #include "VirtualByteStorage.h"
+#include "StorageException.h"
 
 class Storage {
 	ByteStorage* byte_storage;

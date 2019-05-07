@@ -12,5 +12,6 @@ public:
 	~FileStream();
 
 	FileByteStream* open();
+	void erase();
 };
 

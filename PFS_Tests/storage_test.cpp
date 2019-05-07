@@ -7,6 +7,7 @@
 
 #include "../PFS/MapChunkStorage.cpp"
 #include "../PFS/VirtualByteStorage.cpp"
+#include "../PFS/StorageException.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -33,8 +34,11 @@ namespace PFS_Tests{
 
 		TEST_METHOD(Allocation_Overflow_Test) {
 			Storage storage(1024, 64);
-			StorageChunk* chunk = storage.allocate(3000);
-			Assert::IsTrue(chunk == nullptr);
+			try {
+				StorageChunk* chunk = storage.allocate(3000);
+			}
+			catch (StorageException ex) {
+			}
 		}
 		TEST_METHOD(Allocation_Multiple_Test) {
 			Storage storage(1024, 64);
@@ -45,10 +49,15 @@ namespace PFS_Tests{
 		}
 		TEST_METHOD(Allocation_Multiple_Overflow_Test) {
 			Storage storage(1024, 64);
-			StorageChunk* chunk = storage.allocate(300);
-			StorageChunk* chunk1 = storage.allocate(500);
-			StorageChunk* chunk2 = storage.allocate(300);
-			Assert::IsTrue(chunk && chunk1 && !chunk2);
+			try {
+				StorageChunk* chunk = storage.allocate(300);
+				StorageChunk* chunk1 = storage.allocate(500);
+				Assert::IsTrue(chunk && chunk1);
+				StorageChunk* chunk2 = storage.allocate(300);
+			}
+			catch (StorageException ex) {
+
+			}
 		}
 
 		TEST_METHOD(Deallocation_Test) {
@@ -71,22 +80,29 @@ namespace PFS_Tests{
 		}
 		TEST_METHOD(Deallocation_Multiple_Overflow_Test) {
 			Storage storage(1024, 64);
-			StorageChunk* chunk = storage.allocate(500);
-			StorageChunk* chunk1 = storage.allocate(400);
-			storage.deallocate(chunk);
-			StorageChunk* chunk2 = storage.allocate(600);
+			try {
+				StorageChunk* chunk = storage.allocate(500);
+				StorageChunk* chunk1 = storage.allocate(400);
+				Assert::IsTrue(chunk && chunk1);
+				storage.deallocate(chunk);
+				StorageChunk* chunk2 = storage.allocate(600);
+			}
+			catch (StorageException ex) {
 
-			Assert::IsTrue(chunk && chunk1 && !chunk2);
+			}
 		}
 		TEST_METHOD(Resize_Increase_Test) {
 			MapChunkStorage * chunks = new MapChunkStorage();
 			Storage storage(1024, 64, chunks);
-			StorageChunk* chunk = storage.allocate(500);
-			bool res = storage.resize(chunk, 700);
-			Assert::IsTrue(chunks->size() == 700/64+1);
-			StorageChunk * chunk1 = storage.allocate(400);
+			try {
+				StorageChunk* chunk = storage.allocate(500);
+				bool res = storage.resize(chunk, 700);
+				Assert::IsTrue(chunks->size() == 700 / 64 + 1);
+				Assert::IsTrue(res);
+				StorageChunk * chunk1 = storage.allocate(400);
+			} catch(StorageException ex){}
 
-			Assert::IsTrue(res && !chunk1);
+			
 		}
 		TEST_METHOD(Resize_Decrease_Test) {
 			MapChunkStorage * chunks = new MapChunkStorage();

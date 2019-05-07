@@ -14,6 +14,7 @@
 #include "CreateFileCommand.h"
 #include "ReadFileCommand.h"
 #include "CryptFileCommand.h"
+#include "AddUserCommand.h"
 #include "PrimeGenerator.h"
 #include "AsymmetricCryptor.h"
 #include "BigInt.h"
@@ -66,6 +67,7 @@ int main() {
 	cm.register_handler("write", new CreateFileCommand(&fs));
 	cm.register_handler("read", new ReadFileCommand(&fs));
 	cm.register_handler("crypt", new CryptFileCommand(&fs));
+	cm.register_handler("useradd", new AddUserCommand(&fs));
 	
 	while (true) {
 		string command;

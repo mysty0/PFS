@@ -30,6 +30,14 @@ FileByteStream* File::open_stream(std::string name){
 	return stream->open();
 }
 
+std::vector<std::string> File::get_streams(){
+	return stream_table.get_streams();
+}
+
+void File::delete_stream(std::string name, bool full){
+	stream_table.delete_stream(name, full);
+}
+
 bool File::is_directory() const{
 	return false;
 }

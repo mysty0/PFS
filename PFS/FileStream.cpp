@@ -13,3 +13,7 @@ FileStream::~FileStream(){
 FileByteStream* FileStream::open(){
 	return new FileByteStream(descriptor);
 }
+
+void FileStream::erase(){
+	descriptor->delete_file();
+}

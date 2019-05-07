@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddUserCommand.cpp" />
     <ClCompile Include="AsymmetricCryptedFile.cpp" />
     <ClCompile Include="AsymmetricCryptor.cpp" />
     <ClCompile Include="BigInt.cpp" />
@@ -44,6 +45,7 @@
     <ClCompile Include="ReadFileCommand.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageChunk.cpp" />
+    <ClCompile Include="StorageException.h" />
     <ClCompile Include="StreamTable.cpp" />
     <ClCompile Include="SymmetricCryptedFile.cpp" />
     <ClCompile Include="User.cpp" />
@@ -51,6 +53,7 @@
     <ClCompile Include="VirtualByteStorage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddUserCommand.h" />
     <ClInclude Include="AsymmetricCryptedFile.h" />
     <ClInclude Include="AsymmetricCryptor.h" />
     <ClInclude Include="BigInt.h" />
