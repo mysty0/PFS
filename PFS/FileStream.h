@@ -5,7 +5,7 @@
 
 class FileStream{
 	StorageChunk* chunk;
-	FileDescriptor* descriptor;
+	FileDescriptor descriptor;
 
 public:
 	FileStream(Storage* storage);

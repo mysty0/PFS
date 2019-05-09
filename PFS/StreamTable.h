@@ -5,7 +5,7 @@
 
 #include "FileStream.h"
 class StreamTable{
-	std::map<std::string, FileStream*> streams;
+	std::map<std::string, FileStream> streams;
 	Storage* storage;
 
 public:

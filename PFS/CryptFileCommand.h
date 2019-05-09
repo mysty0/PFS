@@ -1,6 +1,6 @@
 #pragma once
 #include "CommandHandler.h"
-#include "AsymmetricCryptedFile.h"
+#include "FileCryptor.h"
 
 class CryptFileCommand :
 	public CommandHandler

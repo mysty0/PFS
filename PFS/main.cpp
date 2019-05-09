@@ -61,6 +61,7 @@ int main() {
 	FileSystem fs = FileSystem();
 	
 	File *file = fs.create_directory(Path(), "test");
+	fs.get_user_table()->add_user(new User("1"));
 	CommandManager cm = CommandManager();
 	cm.register_handler("ls", new FileListCommand(&fs));
 	cm.register_handler("mkdir", new MakeDirectoryCommand(&fs));

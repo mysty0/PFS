@@ -20,6 +20,8 @@ public:
 
 	char read(FileBytePointer pointer);
 	char* read(FileBytePointer pointer, StorageFileSize size);
+	int read_int(FileBytePointer pointer);
+	int read_string(FileBytePointer pointer, std::string& str);
 
 	FileSize get_size();
 };

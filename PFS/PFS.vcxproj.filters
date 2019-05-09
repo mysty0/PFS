@@ -135,9 +135,6 @@
     <ClCompile Include="SymmetricCryptedFile.cpp">
       <Filter>Source Files\Files</Filter>
     </ClCompile>
-    <ClCompile Include="AsymmetricCryptedFile.cpp">
-      <Filter>Source Files\Files</Filter>
-    </ClCompile>
     <ClCompile Include="BigInt.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
@@ -158,6 +155,9 @@
     </ClCompile>
     <ClCompile Include="AddUserCommand.cpp">
       <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="FileCryptor.cpp">
+      <Filter>Source Files\Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,9 +254,6 @@
     <ClInclude Include="BigInt.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="AsymmetricCryptedFile.h">
-      <Filter>Header Files\Files</Filter>
-    </ClInclude>
     <ClInclude Include="AsymmetricCryptor.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
@@ -271,6 +268,9 @@
     </ClInclude>
     <ClInclude Include="AddUserCommand.h">
       <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="FileCryptor.h">
+      <Filter>Header Files\Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

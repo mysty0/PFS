@@ -15,6 +15,11 @@ BigInt::BigInt(unsigned long long n){
 	}
 }
 
+BigInt::BigInt(std::string str){
+	data.resize(str.size());
+	for (int i = str.size() - 1; i >= 0; --i) data[str.size() - i - 1] = str[i] - '0';
+}
+
 BigInt::~BigInt()
 {
 }

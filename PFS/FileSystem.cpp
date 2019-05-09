@@ -44,6 +44,10 @@ UserTable* FileSystem::get_user_table(){
 	return &user_table;
 }
 
+void FileSystem::wipe(){
+	storage->wipe();
+}
+
 Directory *FileSystem::create_directory(Path path, std::string name){
 	Directory *dir = new  Directory(storage, path + name);
 	dir->set_name(name);

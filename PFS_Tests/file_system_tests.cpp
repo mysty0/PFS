@@ -28,6 +28,47 @@ namespace PFS_Tests {
 			bool res = system.get_directory(Path(), false)->is_file_exists(file);
 			Assert::IsTrue(file && res);
 		}
+
+		TEST_METHOD(Byte_Stream_Int_Test) {
+			FileSystem system = FileSystem();
+			File* file = system.create_file(Path(), "test");
+			FileByteStream* stream = (FileByteStream*)file->open(0);
+			stream->write_int(0, 123);
+			int res = stream->read_int(0);
+			Assert::AreEqual(std::string("123"), std::to_string(res));
+			delete stream;
+		}
+
+		TEST_METHOD(Byte_Stream_Int4_Test) {
+			FileSystem system = FileSystem();
+			File* file = system.create_file(Path(), "test");
+			FileByteStream* stream = (FileByteStream*)file->open(0);
+			stream->write_int(0, 4);
+			int res = stream->read_int(0);
+			Assert::AreEqual(std::string("4"), std::to_string(res));
+			delete stream;
+		}
+
+		TEST_METHOD(Byte_Stream_String_Test) {
+			FileSystem system = FileSystem();
+			File* file = system.create_file(Path(), "test");
+			FileByteStream* stream = (FileByteStream*)file->open(0);
+			stream->write_string(0, "1234");
+			std::string res;
+			stream->read_string(0, res);
+			Assert::AreEqual(std::string("1234"), res);
+			delete stream;
+		}
+		TEST_METHOD(Byte_Stream_String_user_Test) {
+			FileSystem system = FileSystem();
+			File* file = system.create_file(Path(), "test");
+			FileByteStream* stream = (FileByteStream*)file->open(0);
+			stream->write_string(0, "user");
+			std::string res;
+			stream->read_string(0, res);
+			Assert::AreEqual(std::string("user"), res);
+			delete stream;
+		}
 		TEST_METHOD(Delete_File_Test) {
 			FileSystem system = FileSystem();
 			File *file = system.create_file(Path(), "test");
@@ -82,6 +123,44 @@ namespace PFS_Tests {
 			User* user = table->get_user("test");
 			Assert::IsTrue(user->get_name() == "test");
 		}
+
+		TEST_METHOD(User_Table_Test1) {
+			FileSystem system = FileSystem();
+			system.wipe();
+			
+			File* file = system.create_file(Path(), "test");
+			FileByteStream* stream = (FileByteStream*)file->open(0);
+			stream->write_int(0, 123);
+
+			UserTable* table = system.get_user_table();
+			table->add_user(new User("user"));
+
+			FileByteStream* streamKeys = file->open_stream("keys");
+
+
+			std::string data;
+
+			int i = 0;
+			for (User* user : table->get_users()) {
+				i = streamKeys->write_string(i, user->get_name());
+				i = streamKeys->write_string(i, "test string");
+			}
+
+			delete streamKeys;
+			i = 0;
+			User* user = table->get_user("user");
+			FileByteStream* streamRead = file->open_stream("keys");
+			std::string user_name;
+			i = streamRead->read_string(i, user_name);
+
+			//if (stream->read_int(i) < 0) return;
+			Assert::AreEqual(i, 8);
+			Assert::AreEqual(std::string("user"), user_name);
+
+			int res = stream->read_int(0);
+			Assert::AreEqual(std::string("123"), std::to_string(res));
+		}
+
 
 		TEST_METHOD(Crypt_File_Test) {
 			FileSystem system = FileSystem();

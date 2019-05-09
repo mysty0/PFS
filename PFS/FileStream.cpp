@@ -1,19 +1,19 @@
 #include "FileStream.h"
 
 
-FileStream::FileStream(Storage *storage){
+FileStream::FileStream(Storage *storage): descriptor(FileDescriptor(nullptr)){
 	chunk = storage->allocate(1);
-	descriptor = new FileDescriptor(storage, chunk);
+	descriptor = FileDescriptor(storage, chunk);
 }
 
 FileStream::~FileStream(){
-	delete descriptor;
+//	delete descriptor;
 }
 
 FileByteStream* FileStream::open(){
-	return new FileByteStream(descriptor);
+	return new FileByteStream(&descriptor);
 }
 
 void FileStream::erase(){
-	descriptor->delete_file();
+	descriptor.delete_file();
 }

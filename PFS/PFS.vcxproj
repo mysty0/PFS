@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddUserCommand.cpp" />
-    <ClCompile Include="AsymmetricCryptedFile.cpp" />
     <ClCompile Include="AsymmetricCryptor.cpp" />
     <ClCompile Include="BigInt.cpp" />
     <ClCompile Include="CommandManager.cpp" />
@@ -31,6 +30,7 @@
     <ClCompile Include="DirectoryStream.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="FileByteStream.cpp" />
+    <ClCompile Include="FileCryptor.cpp" />
     <ClCompile Include="FileDescriptor.cpp" />
     <ClCompile Include="FileListCommand.cpp" />
     <ClCompile Include="FilePermissions.cpp" />
@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddUserCommand.h" />
-    <ClInclude Include="AsymmetricCryptedFile.h" />
     <ClInclude Include="AsymmetricCryptor.h" />
     <ClInclude Include="BigInt.h" />
     <ClInclude Include="ByteStorage.h" />
@@ -68,6 +67,7 @@
     <ClInclude Include="DirectoryStream.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="FileByteStream.h" />
+    <ClInclude Include="FileCryptor.h" />
     <ClInclude Include="FileDataStream.h" />
     <ClInclude Include="FileDescriptor.h" />
     <ClInclude Include="FileListCommand.h" />

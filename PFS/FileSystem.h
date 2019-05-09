@@ -44,4 +44,6 @@ public:
 	File* get_file(Path path);
 
 	UserTable* get_user_table();
+
+	void wipe();
 };
