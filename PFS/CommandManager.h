@@ -20,5 +20,7 @@ public:
 	void delete_handler(std::string command);
 
 	bool process_command(std::string command, std::ostream &out);
+
+	std::map<std::string, CommandHandler*>  get_commands();
 };
 

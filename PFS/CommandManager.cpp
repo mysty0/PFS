@@ -28,3 +28,7 @@ bool CommandManager::process_command(std::string command, std::ostream &out){
 	return commands[args[0]]->handle_command(args[0], args, out);
 	
 }
+
+std::map<std::string, CommandHandler*> CommandManager::get_commands(){
+	return commands;
+}

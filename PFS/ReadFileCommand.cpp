@@ -35,3 +35,7 @@ bool ReadFileCommand::handle_command(std::string command, std::vector<std::strin
 	delete fstream;
 	return true;
 }
+
+void ReadFileCommand::print_help(std::ostream& out){
+	out << "Usage:" << std::endl << "    read PATH[:STREAMNAME] - read file" << std::endl;
+}

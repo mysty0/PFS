@@ -37,6 +37,7 @@
     <ClCompile Include="FileStream.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="Hasher.cpp" />
+    <ClCompile Include="HelpCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MakeDirectoryCommand.cpp" />
     <ClCompile Include="MapChunkStorage.cpp" />
@@ -76,6 +77,7 @@
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="FileTypedef.h" />
     <ClInclude Include="Hasher.h" />
+    <ClInclude Include="HelpCommand.h" />
     <ClInclude Include="MakeDirectoryCommand.h" />
     <ClInclude Include="MapChunkStorage.h" />
     <ClInclude Include="Path.h" />

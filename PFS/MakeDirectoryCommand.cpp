@@ -22,3 +22,7 @@ bool MakeDirectoryCommand::handle_command(std::string command, std::vector<std::
 
 	return false;
 }
+
+void MakeDirectoryCommand::print_help(std::ostream& out){
+	out << "Usage:" << std::endl << "    mkdir PATH - create directory" << std::endl;
+}

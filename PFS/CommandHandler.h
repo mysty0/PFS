@@ -16,5 +16,6 @@ public:
 	~CommandHandler() {}
 
 	virtual bool handle_command(std::string command, std::vector<std::string> args, std::ostream &stream) = 0;
+	virtual void print_help(std::ostream& stream) { stream << "Not impliments" << std::endl; };
 };
 

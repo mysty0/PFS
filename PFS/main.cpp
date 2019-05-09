@@ -15,6 +15,7 @@
 #include "ReadFileCommand.h"
 #include "CryptFileCommand.h"
 #include "AddUserCommand.h"
+#include "HelpCommand.h"
 #include "PrimeGenerator.h"
 #include "AsymmetricCryptor.h"
 #include "BigInt.h"
@@ -69,12 +70,14 @@ int main() {
 	cm.register_handler("read", new ReadFileCommand(&fs));
 	cm.register_handler("crypt", new CryptFileCommand(&fs));
 	cm.register_handler("useradd", new AddUserCommand(&fs));
+	cm.register_handler("help", new HelpCommand(&fs, &cm));
 	
 	while (true) {
 		string command;
 		getline(cin, command);
 		if (command == "exit") break;
-		cm.process_command(command, cout);
+		bool res = cm.process_command(command, cout);
+		if (!res) cout << "Command error" << endl;
 	}
 
 	system("pause");

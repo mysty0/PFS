@@ -12,7 +12,10 @@ CreateFileCommand::~CreateFileCommand()
 }
 
 bool CreateFileCommand::handle_command(std::string command, std::vector<std::string> args, std::ostream& stream){
-	if (args.size() == 1) return false;
+	if (args.size() == 1) {
+		print_help(stream);
+		return false;
+	}
 	
 	Path path = Path(args[1]);
 	File* file = file_system->create_file(path.parent(), path.get_directories().back());
@@ -24,4 +27,8 @@ bool CreateFileCommand::handle_command(std::string command, std::vector<std::str
 	}
 
 	return true;
+}
+
+void CreateFileCommand::print_help(std::ostream& out){
+	out << "Usage:" << std::endl << "    write PATH [DATA] - create new file" << std::endl;
 }

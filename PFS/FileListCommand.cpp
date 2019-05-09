@@ -23,3 +23,7 @@ bool FileListCommand::handle_command(std::string command, std::vector<std::strin
 
 	return true;
 }
+
+void FileListCommand::print_help(std::ostream& out){
+	out << "Usage:" << std::endl << "    ls [PATH] - print list of files in directory" << std::endl;
+}

@@ -12,9 +12,10 @@ CryptFileCommand::~CryptFileCommand()
 }
 
 bool CryptFileCommand::handle_command(std::string command, std::vector<std::string> args, std::ostream& stream){
-	if (args.size() == 1) return false;
-
-	if (args.size() < 2) return false;
+	if (args.size() < 2) {
+		print_help(stream);
+		return false;
+	}
 	if (args.size() == 4 && args[1] == "-d") {
 		User* user = file_system->get_user_table()->get_user(args[2]);
 		if (user == nullptr) return false;
@@ -32,4 +33,8 @@ bool CryptFileCommand::handle_command(std::string command, std::vector<std::stri
 	//crypted.crypt(file_system->get_user_table());
 	FileCryptor::crypt_file(file, file_system->get_user_table());
 	return true;
+}
+
+void CryptFileCommand::print_help(std::ostream& out){
+	out << "Usage:" << std::endl << "    crypt PATH - crypt file" << '\n' << "    crypt -d USERNAME PATH - decrypt file" << std::endl;
 }
